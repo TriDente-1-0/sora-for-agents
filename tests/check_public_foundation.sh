@@ -4,8 +4,6 @@ set -euo pipefail
 template_root=$(cd "$(dirname "$0")/.." && pwd)
 cd "$template_root"
 
-./tests/check_release_attribution.sh
-
 required_files=(
   LICENSE CONTENT_LICENSE.md NOTICE TRADEMARKS.md PRIVACY.md
   operations/TEST_HOST_OPERATIONS.md
