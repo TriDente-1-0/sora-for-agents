@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build:corpus": "node scripts/sync-corpus.mjs",
+    "precheck": "bash ../tests/check_release_attribution.sh",
     "check": "npm run build:corpus && tsc --noEmit",
+    "presmoke": "bash ../tests/check_release_attribution.sh",
     "smoke": "node tests/smoke.mjs"
   },
   "dependencies": {

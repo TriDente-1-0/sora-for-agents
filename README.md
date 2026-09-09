@@ -33,3 +33,8 @@ npm run smoke
 Read [mcp-worker/README.md](mcp-worker/README.md) before deploying your own
 test instance. Contributions require provenance and review as described in
 [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Release gate
+
+Run [the release gates](control/RELEASE_GATES.md) before testing, committing,
+or publishing any change.
