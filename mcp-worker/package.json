@@ -1,0 +1,20 @@
+{
+  "name": "sora-for-agents-mcp",
+  "private": false,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:corpus": "node scripts/sync-corpus.mjs",
+    "check": "npm run build:corpus && tsc --noEmit",
+    "smoke": "node tests/smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "agents": "0.22.0",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260908.1",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,15 @@
+For Agents SORA · MCP
+Copyright 2026 TriDente contributors.
+
+Original source code and configuration are licensed under Apache-2.0.
+Original editorial material, diagrams and structured records are licensed
+under CC-BY-4.0; see CONTENT_LICENSE.md.
+
+Referenced upstream material is not bundled or relicensed:
+- Hyperledger Iroha: https://github.com/hyperledger-iroha/iroha
+  (Apache-2.0 code; CC-BY-4.0 documentation as declared upstream).
+- SORA branding: https://github.com/sora-xor/sora-branding
+  (SORA logo assets CC0-1.0; other repository files Apache-2.0, as declared
+  upstream).
+
+SORA, Iroha and third-party names remain subject to their respective rights.

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "replace-with-your-worker-name",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-01-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "ratelimits": [
+    {
+      "name": "MCP_RATE_LIMITER",
+      "namespace_id": "REPLACE_WITH_YOUR_RATE_LIMIT_NAMESPACE_ID",
+      "simple": { "limit": 10, "period": 60 }
+    }
+  ]
+}
