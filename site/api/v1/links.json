@@ -1,0 +1,62 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "era": "external",
+    "reviewed_at": "2026-09-10",
+    "presentation": "source-linked",
+    "claim_scope": "Direct source link only; link presence is not an endorsement, availability, or operational claim."
+  },
+  "links": [
+    {
+      "id": "sora-home",
+      "label": "SORA Nexus",
+      "url": "https://sora.org/",
+      "kind": "primary-site",
+      "status": "published"
+    },
+    {
+      "id": "iroha-main",
+      "label": "Hyperledger Iroha — main repository",
+      "url": "https://github.com/hyperledger-iroha/iroha",
+      "kind": "source-repository",
+      "status": "published"
+    },
+    {
+      "id": "iroha-readme",
+      "label": "Iroha README",
+      "url": "https://github.com/hyperledger-iroha/iroha#readme",
+      "kind": "repository-entry",
+      "status": "published"
+    },
+    {
+      "id": "iroha-docs",
+      "label": "Iroha docs",
+      "url": "https://github.com/hyperledger-iroha/iroha/tree/main/docs",
+      "kind": "repository-entry",
+      "status": "published"
+    },
+    {
+      "id": "youtube",
+      "label": "SORA YouTube",
+      "url": "https://www.youtube.com/@sora_xor",
+      "kind": "social",
+      "status": "published"
+    },
+    {
+      "id": "youtube-playlists",
+      "label": "SORA YouTube playlists",
+      "url": "https://www.youtube.com/@sora_xor/playlists",
+      "kind": "social-catalog",
+      "status": "published"
+    },
+    {
+      "id": "github-search",
+      "label": "Iroha source search",
+      "url": "https://github.com/hyperledger-iroha/iroha/search",
+      "kind": "repository-entry",
+      "status": "published"
+    }
+  ]
+}

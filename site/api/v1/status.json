@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "status": "published",
+  "updated": "2026-09-10",
+  "available_now": ["Static JSON endpoints", "Markdown reading documents", "Cited topic and link registry"],
+  "not_available": ["Authentication", "Transactional actions", "Support SLA"],
+  "repository_url": "https://github.com/TriDente-1-0/sora-for-agents",
+  "notice": "This site contains read-only source records."
+}

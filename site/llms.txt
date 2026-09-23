@@ -1,0 +1,23 @@
+# SORA Nexus — For Agents public reading layer
+
+> Read-only public reading layer. It is not an authorization boundary, a transaction interface, or a claim of third-party endorsement.
+
+## Primary sources
+
+- [SORA Nexus](https://sora.org/): published protocol and future-use-case material.
+- [SORA Legacy Ecosystem Overview](https://sora.org/sora2): legacy SORA ecosystem material; never combine it with Nexus/Iroha 3 claims.
+- [Hyperledger Iroha repository](https://github.com/hyperledger-iroha/iroha): canonical requested repository entrypoint.
+- [YouTube playlists](https://www.youtube.com/@sora_xor/playlists): time-sensitive social catalogue; local list is an observed screenshot transcription.
+
+## Local corpus
+
+- `api/v1/topics.json` contains compact topic summaries for the human page; `api/v1/atlas.json` contains each complete structured Atlas explanation, sequence and diagram topology.
+- `api/v1/documents.json` contains detailed ecosystem, legacy, legal and whitepaper source records. `api/v1/whitepaper.json` and `api/v1/case-for-xor.json` contain their JSON-only detailed representations.
+- `index.html` is the human-facing reading surface.
+- `for-agents/index.md`, `for-agents/topics.md`, and `for-agents/examples.md` are direct Markdown access and safe-query guidance.
+- `api/v1/site.json`, `topics.json`, `links.json`, `playlists.json`, and `status.json` are generated, versioned static API responses; `api/openapi.yaml` is the public contract.
+- `for-agents/mcp.md` documents the same-origin read-only MCP at `/mcp`.
+
+## Agent contract
+
+Preserve each record's `status` and `era`. Cite its source. Treat `legacy` material as historical SORA v2 context, never as Nexus/Iroha 3 content. Do not present observed playlist counts as current facts. Do not turn future-use-case language into a product availability claim. Do not execute, publish, transact, or make recommendations from this corpus.

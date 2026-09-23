@@ -1,0 +1,408 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "era": "nexus-iroha-3",
+    "presentation": "html-summary",
+    "reviewed_at": "2026-09-10",
+    "claim_scope": "Paraphrased, read-only source context; not an implementation, deployment, availability, or operational claim."
+  },
+  "topics": [
+    {
+      "id": "sovereign-data-spaces",
+      "kind": "protocol-explainer",
+      "title": "Sovereign data spaces",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a claim of deployed availability.",
+      "summary": "Policy-scoped spaces retain local authority, visibility, admission, privacy, and validator boundaries while approved value and evidence can coordinate across one logical ledger.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "amx-atomic-transactions",
+      "kind": "protocol-explainer",
+      "title": "Cross-data-space atomic transactions",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Published-page paraphrase. Diagram topology is an observed transcription of the supplied screenshot, not independent protocol specification.",
+      "summary": "An AMX transaction declares participating spaces and read/write sets. Each space prepares against a common snapshot; Nexus commits only when every required result is valid, otherwise it aborts without partial effects.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        },
+        {
+          "source": "supplied screenshot 2026-09-08",
+          "type": "observed-visual"
+        }
+      ],
+      "diagram": {
+        "id": "amx-2pc",
+        "status": "observed",
+        "caption": "Two data spaces prepare independently; a 2-of-2 Nexus latch allows atomic delivery and payment or restores both roots.",
+        "text_equivalent": "Data space A stages A0 to A1 and returns Prepare QC A. Data space B stages B0 to B1 and returns Prepare QC B. The Nexus latch shows 2/2 prepared. Payment A to B and delivery B to A lock together. All valid evidence commits both; any failed proof or policy restores both roots.",
+        "nodes": [
+          {
+            "id": "space-a",
+            "label": "Data Space A / CBDC A"
+          },
+          {
+            "id": "prepare-a",
+            "label": "Prepare QC A"
+          },
+          {
+            "id": "nexus",
+            "label": "Nexus latch / 2 of 2 prepared"
+          },
+          {
+            "id": "prepare-b",
+            "label": "Prepare QC B"
+          },
+          {
+            "id": "space-b",
+            "label": "Data Space B / CBDC B"
+          },
+          {
+            "id": "commit",
+            "label": "Commit A + B"
+          },
+          {
+            "id": "rollback",
+            "label": "Roll back A + B"
+          }
+        ],
+        "edges": [
+          {
+            "from": "space-a",
+            "to": "prepare-a",
+            "relation": "stages"
+          },
+          {
+            "from": "prepare-a",
+            "to": "nexus",
+            "relation": "prepares"
+          },
+          {
+            "from": "space-b",
+            "to": "prepare-b",
+            "relation": "stages"
+          },
+          {
+            "from": "prepare-b",
+            "to": "nexus",
+            "relation": "prepares"
+          },
+          {
+            "from": "nexus",
+            "to": "commit",
+            "relation": "all-valid"
+          },
+          {
+            "from": "nexus",
+            "to": "rollback",
+            "relation": "any-failure"
+          }
+        ]
+      }
+    },
+    {
+      "id": "iroha-3-core",
+      "kind": "protocol-explainer",
+      "title": "Hyperledger Iroha 3 Core",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "SORA-page description; code provenance is provided separately in the repository registry.",
+      "summary": "SORA Nexus describes Iroha 3 as its deterministic execution core: Torii admits traffic, Kotodama compiles high-level programs, IVM executes bounded logic, and Sumeragi/Kura preserve canonical history.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "sumeragi-finality",
+      "kind": "protocol-explainer",
+      "title": "Sumeragi consensus",
+      "category": "Finality",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "SORA-page paraphrase; not an independent implementation audit.",
+      "summary": "Prepare and Commit quorum certificates bind finality to an exact block subject and frozen validator context; portable commit evidence can be independently checked against trusted context.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "agent-economy",
+      "kind": "future-use-case",
+      "title": "A shared economy for AI agents",
+      "category": "Future use case",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "The SORA page calls this a future use case. It is not a product availability, autonomy, wallet, payment, or integration claim.",
+      "summary": "The page presents future machine-to-machine exchange using accounts, assets, permissions, automation, atomic delivery, receipts, and human-defined authority. It explicitly says Iroha does not run AI models or grant unrestricted autonomy.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "iso-20022-gateway",
+      "kind": "protocol-explainer",
+      "title": "ISO 20022 Gateway",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an integration, deployment or regulatory-approval claim.",
+      "summary": "The page describes a path in which pacs.008 and pacs.009 payment messages are validated at Torii, mapped to ledger-native instructions, and answered with a deterministic pacs.002 status.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "settlement-router",
+      "kind": "protocol-explainer",
+      "title": "Deterministic settlement router",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a live pricing, reserve or settlement-service claim.",
+      "summary": "The page presents deterministic quantity conversion, margins, haircuts and lane-specific buffer policy, with lane commitments, receipts and telemetry for reconciliation.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "lanes-merge-ledger",
+      "kind": "protocol-explainer",
+      "title": "Lanes + Merge Ledger",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an independent performance benchmark.",
+      "summary": "Independent workloads execute in parallel lanes and their certified commitments converge into one canonical merge-ledger history.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "runtime-lane-lifecycle",
+      "kind": "protocol-explainer",
+      "title": "Runtime lane lifecycle",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an instruction to alter network topology.",
+      "summary": "The page describes authorized, signed lifecycle changes that add, replace or retire capacity through a committed lane catalogue and safety gates.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "verifiable-finality-proofs",
+      "kind": "protocol-explainer",
+      "title": "Verifiable finality proofs",
+      "category": "Finality",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; trusted chain context remains an external verifier responsibility.",
+      "summary": "A portable finality proof combines a canonical header, execution commitment, Commit QC, frozen roster and proofs of possession, then binds to independently trusted chain context.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "kotodama-ivm",
+      "kind": "protocol-explainer",
+      "title": "Kotodama Programs",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an executable-programming interface.",
+      "summary": "The page describes readable Kotodama programs compiling to bounded IVM bytecode so validators use the same deterministic runtime.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "iroha-special-instructions",
+      "kind": "protocol-explainer",
+      "title": "Iroha Special Instructions",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it never authorizes any ledger operation.",
+      "summary": "Typed native instructions cover asset definitions, minting, transfer, permissions and supply changes; ordered batches stage dependent changes as one result or discard them together.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "capability-manifests",
+      "kind": "protocol-explainer",
+      "title": "Capability manifests",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an access grant or policy decision.",
+      "summary": "The page describes data-space authority scoped by program, method, asset and role, with activation, expiry, amount limits, allowance windows and deny-wins rules.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "on-chain-automation",
+      "kind": "protocol-explainer",
+      "title": "On-Chain Automation",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; no automated action can be triggered by this corpus.",
+      "summary": "A registered trigger holds one executable, event filter, authority and repeat policy; permissions and bounded runtime controls constrain execution and record its outcome.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "norito-codec",
+      "kind": "protocol-explainer",
+      "title": "Norito Codec",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an independent codec conformance test.",
+      "summary": "Typed values are encoded in schema-bound frames with version, schema hash, compression, length, integrity checksum and layout metadata for exact validation and reconstruction.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "soranet-sorafs",
+      "kind": "protocol-explainer",
+      "title": "SoraNet + SoraFS",
+      "category": "Ecosystem extension",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it does not make a storage, relay, payment or availability guarantee.",
+      "summary": "The page presents a blinded relay path and content-addressed retrieval in which manifests bind chunks, order, length and digests before verified reconstruction.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "fastpq-proof-pipeline",
+      "kind": "protocol-explainer",
+      "title": "FASTPQ Proof Pipeline",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a privacy or compliance certification.",
+      "summary": "The page describes private execution commitments becoming proof inputs so public admission can verify required evidence without receiving the complete private trace.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "privacy-proof-admission",
+      "kind": "protocol-explainer",
+      "title": "Privacy-proof admission",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a proof-verification service.",
+      "summary": "Lane manifests register commitments or proof descriptors; admission checks a supplied witness against the routed lane registry and fails closed if accepted evidence is absent.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "data-availability",
+      "kind": "protocol-explainer",
+      "title": "Data Availability & Proofs",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an availability SLA or retrieval guarantee.",
+      "summary": "The page presents recoverable committed history through sharding, sampling and reconstruction so proofs remain connected to retrievable data.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,917 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "kind": "semantic-diagram",
+    "status": "published",
+    "era": "nexus-iroha-3",
+    "reviewed_at": "2026-09-10",
+    "presentation": "html-title-and-json-detail",
+    "claim_scope": "Semantic diagram companion only; not an implementation specification, deployment claim, or operational interface."
+  },
+  "updated": "2026-09-10",
+  "source_url": "https://sora.org/",
+  "notice": "Complete structured Atlas companion. Each record retains explanatory scope, ordered protocol sequence and semantic diagram topology; it is not an implementation specification or deployment claim.",
+  "topics": [
+    {
+      "id": "iso-20022-gateway",
+      "title": "ISO 20022 Gateway",
+      "section": "Interoperability",
+      "explanation": [
+        "pacs.008 and pacs.009 institutional payment messages enter through Torii.",
+        "Schema and policy validation map accepted messages to Iroha-native instructions and return deterministic pacs.002 status."
+      ],
+      "sequence": [
+        "Receive pacs.008 or pacs.009.",
+        "Validate schema and policy.",
+        "Execute the mapped Iroha instruction.",
+        "Return accepted, rejected or settled pacs.002 status."
+      ],
+      "diagram": {
+        "caption": "Institutional message ingress becomes deterministic ledger action and canonical status.",
+        "nodes": [
+          "Message",
+          "Torii bridge",
+          "Policy validation",
+          "Iroha ledger",
+          "Status API"
+        ],
+        "edges": [
+          [
+            "Message",
+            "Torii bridge"
+          ],
+          [
+            "Torii bridge",
+            "Policy validation"
+          ],
+          [
+            "Policy validation",
+            "Iroha ledger"
+          ],
+          [
+            "Iroha ledger",
+            "Status API"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sovereign-data-spaces",
+      "title": "Sovereign Data Spaces",
+      "section": "Interoperability",
+      "explanation": [
+        "Each space retains policy, visibility, admission, privacy and validator boundaries.",
+        "Only authorised value and evidence cross a boundary; the full private state does not."
+      ],
+      "sequence": [
+        "Apply local policy in public or restricted space.",
+        "Receive an explicitly authorised boundary request.",
+        "Coordinate approved evidence and value across the shared logical ledger."
+      ],
+      "diagram": {
+        "caption": "Separate public and restricted spaces operate under local policy while authorised flows cross an explicit boundary.",
+        "nodes": [
+          "Public space",
+          "Restricted space",
+          "Policy boundary",
+          "Authorised flow",
+          "Nexus"
+        ],
+        "edges": [
+          [
+            "Public space",
+            "Policy boundary"
+          ],
+          [
+            "Restricted space",
+            "Policy boundary"
+          ],
+          [
+            "Policy boundary",
+            "Authorised flow"
+          ],
+          [
+            "Authorised flow",
+            "Nexus"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "amx-atomic-transactions",
+      "title": "Cross-data-space atomic transactions",
+      "section": "Interoperability",
+      "explanation": [
+        "An AMX transaction declares spaces and read/write sets against one authority snapshot.",
+        "All participants prepare and provide valid evidence before both state transitions commit; any failure restores both roots."
+      ],
+      "sequence": [
+        "Declare spaces, read/write sets and snapshot.",
+        "Stage A0→A1 and B0→B1; obtain participant prepare QCs.",
+        "Expose a 2-of-2 prepared latch.",
+        "Move payment and delivery under one atomic lock.",
+        "Commit both legs with a receipt or roll both back."
+      ],
+      "diagram": {
+        "caption": "Two spaces prepare independently and pass a 2-of-2 Nexus latch before atomic commit or rollback.",
+        "nodes": [
+          "Data space A",
+          "Prepare QC A",
+          "Nexus latch 2/2",
+          "Prepare QC B",
+          "Data space B",
+          "Commit A+B",
+          "Rollback A+B"
+        ],
+        "edges": [
+          [
+            "Data space A",
+            "Prepare QC A"
+          ],
+          [
+            "Prepare QC A",
+            "Nexus latch 2/2"
+          ],
+          [
+            "Data space B",
+            "Prepare QC B"
+          ],
+          [
+            "Prepare QC B",
+            "Nexus latch 2/2"
+          ],
+          [
+            "Nexus latch 2/2",
+            "Commit A+B"
+          ],
+          [
+            "Nexus latch 2/2",
+            "Rollback A+B"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "settlement-router",
+      "title": "Deterministic settlement router",
+      "section": "Interoperability",
+      "explanation": [
+        "Exact quantity conversion, oracle input, margins, haircuts and lane-buffer policy produce a replayable settlement result.",
+        "Lane commitments, receipts and telemetry support operator and auditor reconciliation."
+      ],
+      "sequence": [
+        "Validate amount, oracle, margin and liquidity policy.",
+        "Calculate canonical XOR obligation and applied haircut.",
+        "Check lane buffer state.",
+        "Seal lane commitment and emit reconciliation receipt."
+      ],
+      "diagram": {
+        "caption": "One obligation passes canonical input, conversion, haircut, buffer policy and lane commitment.",
+        "nodes": [
+          "Canonical input",
+          "Exact XOR due",
+          "Haircut",
+          "Buffer policy",
+          "Lane commitment",
+          "Norito receipt"
+        ],
+        "edges": [
+          [
+            "Canonical input",
+            "Exact XOR due"
+          ],
+          [
+            "Exact XOR due",
+            "Haircut"
+          ],
+          [
+            "Haircut",
+            "Buffer policy"
+          ],
+          [
+            "Buffer policy",
+            "Lane commitment"
+          ],
+          [
+            "Lane commitment",
+            "Norito receipt"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "iroha-3-core",
+      "title": "Hyperledger Iroha 3 Core",
+      "section": "Execution",
+      "explanation": [
+        "Torii admits traffic, Kotodama compiles high-level programs and IVM runs bounded deterministic logic.",
+        "Lane routing provides capacity while Sumeragi finality and Kura preserve a single canonical history."
+      ],
+      "sequence": [
+        "Torii admits a signed request.",
+        "Kotodama compiles it for IVM execution.",
+        "The runtime routes it through an assigned lane.",
+        "Sumeragi and Kura seal canonical commit."
+      ],
+      "diagram": {
+        "caption": "Admission, compilation, deterministic execution, routing and canonical commit run as one core.",
+        "nodes": [
+          "Torii",
+          "Kotodama",
+          "IVM",
+          "Lane scheduler",
+          "Sumeragi + Kura"
+        ],
+        "edges": [
+          [
+            "Torii",
+            "Kotodama"
+          ],
+          [
+            "Kotodama",
+            "IVM"
+          ],
+          [
+            "IVM",
+            "Lane scheduler"
+          ],
+          [
+            "Lane scheduler",
+            "Sumeragi + Kura"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "lanes-merge-ledger",
+      "title": "Lanes + Merge Ledger",
+      "section": "Execution",
+      "explanation": [
+        "Independent workloads execute in parallel rather than one queue.",
+        "Certified lane commitments converge into one merge-ledger history rather than separate chains."
+      ],
+      "sequence": [
+        "Route independent workloads into parallel lanes.",
+        "Produce certified commitment per lane.",
+        "Order commitments into one merge-ledger block."
+      ],
+      "diagram": {
+        "caption": "Parallel lanes converge into a shared history.",
+        "nodes": [
+          "Lane A",
+          "Lane B",
+          "Lane C",
+          "Certified commits",
+          "Merge ledger"
+        ],
+        "edges": [
+          [
+            "Lane A",
+            "Certified commits"
+          ],
+          [
+            "Lane B",
+            "Certified commits"
+          ],
+          [
+            "Lane C",
+            "Certified commits"
+          ],
+          [
+            "Certified commits",
+            "Merge ledger"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "runtime-lane-lifecycle",
+      "title": "Runtime lane lifecycle",
+      "section": "Execution",
+      "explanation": [
+        "Authorised signed lifecycle changes commit to exact lane catalogues and incarnations.",
+        "Stale catalogues, invalid plans and unsafe retirement are rejected; routing, storage and telemetry reconcile after commit."
+      ],
+      "sequence": [
+        "Review catalogue and sign lifecycle plan.",
+        "Validate authority, commitment, incarnation and safety gates.",
+        "Commit topology update and refresh routing.",
+        "Bring lane online or retire only after outstanding work clears."
+      ],
+      "diagram": {
+        "caption": "A signed plan validates, adds, routes, drains and retires capacity under consensus.",
+        "nodes": [
+          "Signed plan",
+          "Validate",
+          "Block commit",
+          "Add lane",
+          "Route + observe",
+          "Drain",
+          "Retire"
+        ],
+        "edges": [
+          [
+            "Signed plan",
+            "Validate"
+          ],
+          [
+            "Validate",
+            "Block commit"
+          ],
+          [
+            "Block commit",
+            "Add lane"
+          ],
+          [
+            "Add lane",
+            "Route + observe"
+          ],
+          [
+            "Route + observe",
+            "Drain"
+          ],
+          [
+            "Drain",
+            "Retire"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sumeragi-consensus",
+      "title": "Sumeragi Consensus",
+      "section": "Finality",
+      "explanation": [
+        "Prepare and Commit quorum certificates bind an exact subject, frozen validator roster, height and deterministic transition.",
+        "Bodies, vote intent, locks and decisions cross durable storage boundaries before the protocol advances."
+      ],
+      "sequence": [
+        "Leader broadcasts signed proposal and manifest.",
+        "Validators reconstruct, validate and durably store exact body.",
+        "Form Prepare QC from thresholds.",
+        "Persist lock and release Commit votes.",
+        "Persist Commit QC decision, apply body and open next height."
+      ],
+      "diagram": {
+        "caption": "Deterministic BFT finality advances through proposal, durable validation, prepare QC, lock and commit QC.",
+        "nodes": [
+          "Proposal",
+          "Exact body",
+          "Prepare QC",
+          "Lock",
+          "Commit QC",
+          "Final state"
+        ],
+        "edges": [
+          [
+            "Proposal",
+            "Exact body"
+          ],
+          [
+            "Exact body",
+            "Prepare QC"
+          ],
+          [
+            "Prepare QC",
+            "Lock"
+          ],
+          [
+            "Lock",
+            "Commit QC"
+          ],
+          [
+            "Commit QC",
+            "Final state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "verifiable-finality-proofs",
+      "title": "Verifiable finality proofs",
+      "section": "Finality",
+      "explanation": [
+        "A portable proof includes canonical header, certified subject, execution roots, Commit QC, frozen roster and proofs of possession.",
+        "A verifier binds the proof to independently trusted context and checks structure, signer membership, dual quorum and aggregate BLS signature."
+      ],
+      "sequence": [
+        "Assemble header, subject, roots, QC, roster and PoPs.",
+        "Seal Norito proof envelope.",
+        "Bind to trusted chain/context anchor.",
+        "Verify bindings, quorums, signer order, PoPs and aggregate signature."
+      ],
+      "diagram": {
+        "caption": "Exact finality evidence is sealed then checked against an external trusted anchor.",
+        "nodes": [
+          "Header",
+          "Subject + roots",
+          "Commit QC",
+          "Frozen roster + PoPs",
+          "Proof envelope",
+          "Trusted anchor",
+          "Accepted finality"
+        ],
+        "edges": [
+          [
+            "Header",
+            "Proof envelope"
+          ],
+          [
+            "Subject + roots",
+            "Proof envelope"
+          ],
+          [
+            "Commit QC",
+            "Proof envelope"
+          ],
+          [
+            "Frozen roster + PoPs",
+            "Proof envelope"
+          ],
+          [
+            "Proof envelope",
+            "Trusted anchor"
+          ],
+          [
+            "Trusted anchor",
+            "Accepted finality"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "kotodama-ivm",
+      "title": "Kotodama Programs",
+      "section": "Programmability",
+      "explanation": [
+        "Readable Kotodama source compiles to bounded IVM bytecode.",
+        "Every validator executes the same bounded runtime and derives the same state transition."
+      ],
+      "sequence": [
+        "Write readable Kotodama source.",
+        "Compile to IVM bytecode.",
+        "Consume bounded cycle budget.",
+        "Derive identical state transition on every validator."
+      ],
+      "diagram": {
+        "caption": "Source compiles into bounded bytecode for deterministic peer execution.",
+        "nodes": [
+          "Kotodama source",
+          "Compiler",
+          "IVM bytecode",
+          "Bounded execution",
+          "Same state"
+        ],
+        "edges": [
+          [
+            "Kotodama source",
+            "Compiler"
+          ],
+          [
+            "Compiler",
+            "IVM bytecode"
+          ],
+          [
+            "IVM bytecode",
+            "Bounded execution"
+          ],
+          [
+            "Bounded execution",
+            "Same state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "iroha-special-instructions",
+      "title": "Iroha Special Instructions",
+      "section": "Programmability",
+      "explanation": [
+        "Native typed operations cover definitions, mint, transfer, permissions and burn under explicit authority.",
+        "An ordered batch stages dependent changes and commits all or discards all on failure."
+      ],
+      "sequence": [
+        "Register asset definition with supply zero.",
+        "Mint after authority and policy checks.",
+        "Transfer without changing supply.",
+        "Grant permission.",
+        "Burn and commit final state."
+      ],
+      "diagram": {
+        "caption": "An ordered ISI batch stages native state transitions then commits one result.",
+        "nodes": [
+          "Register",
+          "Mint",
+          "Transfer",
+          "Grant",
+          "Burn",
+          "Committed state"
+        ],
+        "edges": [
+          [
+            "Register",
+            "Mint"
+          ],
+          [
+            "Mint",
+            "Transfer"
+          ],
+          [
+            "Transfer",
+            "Grant"
+          ],
+          [
+            "Grant",
+            "Burn"
+          ],
+          [
+            "Burn",
+            "Committed state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "capability-manifests",
+      "title": "Capability manifests",
+      "section": "Programmability",
+      "explanation": [
+        "A manifest scopes a universal account’s authority by data space, program, method, asset and optional AMX role.",
+        "Activation/expiry, amount limits, allowance windows and deny-wins evaluation make authority inspectable and bounded."
+      ],
+      "sequence": [
+        "Resolve subject to universal account and active manifest.",
+        "Check requested scope and epoch/amount limits.",
+        "Scan matching deny rules.",
+        "Return allowed grant metadata or structured denial."
+      ],
+      "diagram": {
+        "caption": "A request resolves context, matches an active manifest, checks denies and returns a verdict.",
+        "nodes": [
+          "Request context",
+          "UAID binding",
+          "Active manifest",
+          "Deny scan",
+          "Allowed grant or denial"
+        ],
+        "edges": [
+          [
+            "Request context",
+            "UAID binding"
+          ],
+          [
+            "UAID binding",
+            "Active manifest"
+          ],
+          [
+            "Active manifest",
+            "Deny scan"
+          ],
+          [
+            "Deny scan",
+            "Allowed grant or denial"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "on-chain-automation",
+      "title": "On-Chain Automation",
+      "section": "Programmability",
+      "explanation": [
+        "A trigger stores one executable, one event filter, declared authority and repeat policy.",
+        "Permissions, repeat limits, fuel/cycles, gas and execution depth bound the resulting action and its recorded outcome."
+      ],
+      "sequence": [
+        "Register one supported filter configuration.",
+        "Matching event loads executable, authority and remaining repeats.",
+        "Resolve filter, enabled state, authority and runtime bounds.",
+        "Stage state change and consume repeat on success.",
+        "Record TriggerCompleted outcome."
+      ],
+      "diagram": {
+        "caption": "One exact event filter activates bounded authorised work and a completion record.",
+        "nodes": [
+          "Trigger active",
+          "Event filters",
+          "Match",
+          "Authority + bounds",
+          "Action",
+          "Completion"
+        ],
+        "edges": [
+          [
+            "Trigger active",
+            "Event filters"
+          ],
+          [
+            "Event filters",
+            "Match"
+          ],
+          [
+            "Match",
+            "Authority + bounds"
+          ],
+          [
+            "Authority + bounds",
+            "Action"
+          ],
+          [
+            "Action",
+            "Completion"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "norito-codec",
+      "title": "Norito Codec",
+      "section": "Programmability",
+      "explanation": [
+        "Typed values use canonical payloads framed by an NRT0 header with version, schema hash, compression, declared length, CRC64-XZ and layout flags.",
+        "Readers validate boundaries before reconstruction; uncompressed canonical layout produces the same bytes for the same value."
+      ],
+      "sequence": [
+        "Serialize ordered fields.",
+        "Seal 40-byte NRT0 header.",
+        "Stream header and payload.",
+        "Validate magic, version, layout, schema, length and CRC.",
+        "Decode the same typed value."
+      ],
+      "diagram": {
+        "caption": "A typed value becomes a checked frame and reconstructs exactly.",
+        "nodes": [
+          "Typed value",
+          "Canonical fields",
+          "NRT0 frame",
+          "Chunked reader",
+          "Validation",
+          "Decoded value"
+        ],
+        "edges": [
+          [
+            "Typed value",
+            "Canonical fields"
+          ],
+          [
+            "Canonical fields",
+            "NRT0 frame"
+          ],
+          [
+            "NRT0 frame",
+            "Chunked reader"
+          ],
+          [
+            "Chunked reader",
+            "Validation"
+          ],
+          [
+            "Validation",
+            "Decoded value"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "soranet-sorafs",
+      "title": "SoraNet + SoraFS",
+      "section": "Ecosystem extension",
+      "explanation": [
+        "A blinded request selects entry, middle and exit relay roles under strict transport policy.",
+        "SoraFS resolves a manifest, retrieves chunks from eligible providers and validates chunks and completed payload before returning evidence."
+      ],
+      "sequence": [
+        "Turn content address into blinded key.",
+        "Select SoraNet path by role/version/policy.",
+        "Cross entry, middle and exit relays.",
+        "Resolve SoraFS manifest and expected digests.",
+        "Retrieve ordered provider chunks and verify reconstruction.",
+        "Return verified object and fetch evidence."
+      ],
+      "diagram": {
+        "caption": "A blinded relay request resolves manifest-bound chunks then returns verified content.",
+        "nodes": [
+          "Content address",
+          "Entry",
+          "Middle",
+          "Exit",
+          "Manifest",
+          "Providers",
+          "Verified object"
+        ],
+        "edges": [
+          [
+            "Content address",
+            "Entry"
+          ],
+          [
+            "Entry",
+            "Middle"
+          ],
+          [
+            "Middle",
+            "Exit"
+          ],
+          [
+            "Exit",
+            "Manifest"
+          ],
+          [
+            "Manifest",
+            "Providers"
+          ],
+          [
+            "Providers",
+            "Verified object"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "agent-economy",
+      "title": "A shared economy for AI agents",
+      "section": "Agent economy",
+      "status": "future-use-case",
+      "explanation": [
+        "The page presents a future use case using accounts, assets, permissions, automation, atomic delivery and receipts under human-defined authority.",
+        "It explicitly says Iroha does not run AI models, determine AI control, or grant unrestricted autonomy."
+      ],
+      "sequence": [
+        "Buyer requests a machine-readable service.",
+        "Check authority, balance and spending limits.",
+        "Provider registers or mints service asset.",
+        "Enter payment and delivery in atomic transaction.",
+        "Commit both sides or roll both back.",
+        "Emit canonical audit receipt."
+      ],
+      "diagram": {
+        "caption": "Authorised accounts exchange payment and digital rights atomically under human policy.",
+        "nodes": [
+          "Buyer account",
+          "Human-defined policy",
+          "Provider account",
+          "Service asset",
+          "Atomic exchange",
+          "Canonical receipt"
+        ],
+        "edges": [
+          [
+            "Buyer account",
+            "Human-defined policy"
+          ],
+          [
+            "Human-defined policy",
+            "Atomic exchange"
+          ],
+          [
+            "Provider account",
+            "Service asset"
+          ],
+          [
+            "Service asset",
+            "Atomic exchange"
+          ],
+          [
+            "Atomic exchange",
+            "Canonical receipt"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "fastpq-proof-pipeline",
+      "title": "FASTPQ Proof Pipeline",
+      "section": "Privacy",
+      "explanation": [
+        "Private execution traces remain within their data space while commitments become public proof inputs.",
+        "A public verifier reaches admission without receiving the complete trace; privacy does not remove correctness checks."
+      ],
+      "sequence": [
+        "Keep private execution trace within its data space.",
+        "Create public commitment and proof inputs.",
+        "Verify evidence and decide admission without exposing trace."
+      ],
+      "diagram": {
+        "caption": "Private trace produces a public commitment and a verified admission decision.",
+        "nodes": [
+          "Private trace",
+          "Commitment",
+          "Proof inputs",
+          "Verifier",
+          "Admission decision"
+        ],
+        "edges": [
+          [
+            "Private trace",
+            "Commitment"
+          ],
+          [
+            "Commitment",
+            "Proof inputs"
+          ],
+          [
+            "Proof inputs",
+            "Verifier"
+          ],
+          [
+            "Verifier",
+            "Admission decision"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "privacy-proof-admission",
+      "title": "Privacy-proof admission",
+      "section": "Privacy",
+      "explanation": [
+        "Lane manifests register approved commitments such as Merkle roots or proof descriptors.",
+        "Transactions attach a witness; admission checks it against the routed lane registry and fails closed when required evidence is absent, malformed or unregistered."
+      ],
+      "sequence": [
+        "Governance registers commitment identifiers and verification parameters.",
+        "Transaction attaches witness for routed lane.",
+        "Admission verifies attachment and applies lane-compliance rule.",
+        "Accept valid evidence or reject before queueing."
+      ],
+      "diagram": {
+        "caption": "A private-data-space witness is checked against a lane proof policy before admission.",
+        "nodes": [
+          "Private data space",
+          "Witness",
+          "Lane registry",
+          "Proof policy",
+          "Admitted or rejected"
+        ],
+        "edges": [
+          [
+            "Private data space",
+            "Witness"
+          ],
+          [
+            "Witness",
+            "Lane registry"
+          ],
+          [
+            "Lane registry",
+            "Proof policy"
+          ],
+          [
+            "Proof policy",
+            "Admitted or rejected"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "data-availability",
+      "title": "Data Availability & Proofs",
+      "section": "Privacy",
+      "explanation": [
+        "Committed history is made recoverable through sharding, sampling and reconstruction.",
+        "Availability evidence keeps proofs connected to data that can be retrieved rather than only an opaque commitment."
+      ],
+      "sequence": [
+        "Commit data into availability structure.",
+        "Shard data for distribution.",
+        "Sample and verify availability evidence.",
+        "Recover/reconstruct committed history when required."
+      ],
+      "diagram": {
+        "caption": "Committed data is sharded, sampled and reconstructed to keep proofs tied to retrievable history.",
+        "nodes": [
+          "Committed data",
+          "Shards",
+          "Distribution",
+          "Sampling",
+          "Recovery",
+          "Available history"
+        ],
+        "edges": [
+          [
+            "Committed data",
+            "Shards"
+          ],
+          [
+            "Shards",
+            "Distribution"
+          ],
+          [
+            "Distribution",
+            "Sampling"
+          ],
+          [
+            "Sampling",
+            "Recovery"
+          ],
+          [
+            "Recovery",
+            "Available history"
+          ]
+        ]
+      }
+    }
+  ]
+}

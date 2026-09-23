@@ -1,7 +1,16 @@
 # Contributing
 
 Thank you for improving this read-only knowledge service. Use a branch and a
-pull request; do not push directly to `main`.
+pull request; do not push directly to `main`. Use a concise Conventional
+Commit-style subject and sign every contribution off under the Developer
+Certificate of Origin (DCO):
+
+```bash
+git commit -s -S -m "type: concise change"
+```
+
+`-s` adds a `Signed-off-by:` line; `-S` creates a cryptographic signature.
+GitHub also requires valid signed commits on `main`.
 
 Before opening a pull request, state the source of truth, evidence status,
 data boundary and tests run. Keep third-party material linked and attributed;

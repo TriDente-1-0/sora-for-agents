@@ -1,0 +1,186 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "updated": "2026-09-10",
+  "id": "sora-nexus-whitepaper",
+  "kind": "primary-document-representation",
+  "title": "Hyperledger Iroha 3: SORA Nexus",
+  "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+  "source_status": "Draft for Review",
+  "source_date": "2025-11-26",
+  "presentation": "json-only",
+  "content_mode": "section-by-section representation",
+  "notice": "This JSON represents the paper by page-anchored sections and detailed summaries. It does not replace, amend, or reproduce the canonical PDF wording.",
+  "claim_scope": "Document representation only; not an implementation specification, deployment claim, operational interface, legal commitment, or performance guarantee.",
+  "sections": [
+    {
+      "id": "abstract",
+      "title": "Abstract",
+      "page_start": 4,
+      "summary": "Introduces SORA Nexus as a single logical ledger built on Hyperledger Iroha 3. The stated design combines cooperating validators and data spaces to support privacy, deterministic execution, and interoperability across regulated and open domains."
+    },
+    {
+      "id": "executive-summary",
+      "title": "Executive Summary",
+      "page_start": 4,
+      "summary": "Sets out the paper’s first-principles case for a unified ledger architecture rather than separate public and private chains. It frames data sovereignty, deterministic execution, cryptographic proofs, availability, and institutional interoperability as one system design."
+    },
+    {
+      "id": "nexus-highlights",
+      "title": "SORA Nexus Highlights",
+      "page_start": 5,
+      "summary": "Summarises the stated architecture: data spaces, lanes and a merge ledger, the Iroha Virtual Machine and Kotodama, Sumeragi finality, FASTPQ proofs, data availability, ISO 20022 alignment, and Norito serialization."
+    },
+    {
+      "id": "end-of-history",
+      "title": "SORA Nexus: The End of History",
+      "page_start": 6,
+      "summary": "Presents the paper’s unification thesis: financial and digital systems should be able to coordinate on one logical ledger without forcing every participant into the same visibility, policy, or validator regime."
+    },
+    {
+      "id": "context-goals",
+      "title": "Context and Goals",
+      "page_start": 7,
+      "summary": "Defines the architectural motivation: public chains can expose data and make performance difficult to predict, while isolated systems lose composability. The intended goal is common settlement with bounded policy and privacy domains."
+    },
+    {
+      "id": "motivation",
+      "title": "Motivation",
+      "page_start": 7,
+      "summary": "Explains why institutional systems, open applications, and sovereign monetary environments require shared coordination without collapsing their respective governance and information boundaries."
+    },
+    {
+      "id": "design-goals",
+      "title": "Design Goals",
+      "page_start": 7,
+      "summary": "Organises the desired properties around deterministic operation, privacy, interoperability, scalable capacity, auditable governance, and common history across differentiated data spaces."
+    },
+    {
+      "id": "ivm-core",
+      "title": "IVM at the Core",
+      "page_start": 8,
+      "summary": "Places the Iroha Virtual Machine at the execution core. The paper describes a controlled deterministic runtime intended to make high-level programs and native instructions resolve consistently across peers."
+    },
+    {
+      "id": "architecture-overview",
+      "title": "Architecture Overview",
+      "page_start": 9,
+      "summary": "Introduces the major architectural components and their roles: data spaces for bounded domains, lanes for parallel work, a merge ledger for canonical ordering, and shared execution and finality machinery."
+    },
+    {
+      "id": "components-roles",
+      "title": "Components and Roles",
+      "page_start": 9,
+      "summary": "Describes how admission, execution, routing, storage, consensus, proof systems, and governance components cooperate while retaining distinct responsibilities."
+    },
+    {
+      "id": "data-spaces",
+      "title": "Data Spaces",
+      "page_start": 9,
+      "summary": "Explains policy-scoped spaces as domains that retain local visibility, admission, privacy, governance, and validator boundaries while authorized evidence and value can coordinate through shared settlement."
+    },
+    {
+      "id": "lanes-merge",
+      "title": "Lanes and Merge Ledger",
+      "page_start": 9,
+      "summary": "Describes parallel execution lanes whose certified commitments converge into a shared canonical history, aiming to add capacity without fragmenting assets, liquidity, or institutional context."
+    },
+    {
+      "id": "data-model-governance",
+      "title": "Data Space Model and Governance",
+      "page_start": 10,
+      "summary": "Covers public and restricted domains and the governance surfaces that define their policies. The stated model treats policy and privacy boundaries as part of the ledger topology rather than after-the-fact application conventions."
+    },
+    {
+      "id": "consensus-scheduling-finality",
+      "title": "Consensus, Scheduling, and Finality",
+      "page_start": 10,
+      "summary": "Groups the mechanisms for admission, fair scheduling, lane topology changes, and Byzantine finality. The focus is on making the route from request to durable canonical state explicit and reviewable."
+    },
+    {
+      "id": "data-availability-storage",
+      "title": "Data Availability and Storage",
+      "page_start": 15,
+      "summary": "Describes erasure-coded storage, availability sampling, certificates, and proof systems intended to keep commitments connected to recoverable data while limiting unnecessary disclosure."
+    },
+    {
+      "id": "cryptography-serialization",
+      "title": "Cryptography and Serialization",
+      "page_start": 17,
+      "summary": "Covers canonical cryptographic primitives and serialization. Norito is presented as the encoding layer that allows nodes and external systems to validate and reconstruct typed values consistently."
+    },
+    {
+      "id": "smart-contracts-execution",
+      "title": "Smart Contracts and Execution",
+      "page_start": 18,
+      "summary": "Covers Kotodama compilation to IVM bytecode, the rationale for a custom deterministic virtual machine, and runtime interfaces such as ABI, memory, syscalls, and gas boundaries."
+    },
+    {
+      "id": "transaction-lifecycle-networking",
+      "title": "Transaction Lifecycle and Networking",
+      "page_start": 19,
+      "summary": "Describes the path by which signed requests are admitted, propagated, validated, executed, and committed, with the aim that identical inputs and authority context lead to the same network result."
+    },
+    {
+      "id": "account-model",
+      "title": "Account Model, Encoding, and Multisig",
+      "page_start": 20,
+      "summary": "Covers account structure and lifecycle, state application, automation triggers, and multi-signature or authority-related concerns in the wider execution model."
+    },
+    {
+      "id": "interoperability-connectors",
+      "title": "Interoperability and Connectors",
+      "page_start": 23,
+      "summary": "Addresses connection to institutional and external systems. The paper associates this layer with ISO 20022-aligned messaging, canonical envelopes, and explicit policy boundaries for coordinated value exchange."
+    },
+    {
+      "id": "ecosystem-components",
+      "title": "Ecosystem Components",
+      "page_start": 23,
+      "summary": "Indexes SoraFS, SoraNet, Soracles, ISO 20022 alignment, Norito streaming, Kaigi, and Taikai as components around the core ledger and execution architecture."
+    },
+    {
+      "id": "governance",
+      "title": "Governance: SORA Parliament",
+      "page_start": 28,
+      "summary": "Covers governance bodies and selection, runtime upgrades, the economic model and XOR utility, offline transactions, and developer experience. It frames changes to shared infrastructure as governed and auditable rather than ad hoc."
+    },
+    {
+      "id": "privacy-security-compliance",
+      "title": "Privacy, Security, and Compliance",
+      "page_start": 31,
+      "summary": "Covers privacy transactions, proof systems, and related compliance concerns. Its architectural focus is the verification of narrow claims without treating complete transaction visibility as the default condition."
+    },
+    {
+      "id": "operations-observability",
+      "title": "Operations and Observability",
+      "page_start": 33,
+      "summary": "Addresses operating and observing the network, including the information needed to understand state, capacity, and execution without conflating observability with unrestricted disclosure."
+    },
+    {
+      "id": "performance-targets",
+      "title": "Performance Targets and Defaults",
+      "page_start": 33,
+      "summary": "Lists performance-related targets and defaults as part of the document’s design discussion. These are document statements, not independent benchmarks or production service-level commitments in this corpus."
+    },
+    {
+      "id": "mathematical-foundations",
+      "title": "Mathematical Foundations",
+      "page_start": 33,
+      "summary": "Collects the formal and quantitative material behind start-time fair queuing, lane and data-availability budgets, erasure coding, availability confidence, proof composition, Fiat–Shamir, and XOR fee equilibrium."
+    },
+    {
+      "id": "use-cases",
+      "title": "Use Cases",
+      "page_start": 37,
+      "summary": "Places the architecture in practical contexts where sovereign policy, shared settlement, privacy boundaries, programmable execution, and interoperability may need to coexist."
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusion",
+      "page_start": 37,
+      "summary": "Returns to the paper’s central proposition: a shared logical ledger can support differentiated policy and privacy domains when execution, finality, proofs, and governance are designed as mutually bounded components."
+    }
+  ]
+}

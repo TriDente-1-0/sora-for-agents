@@ -1,0 +1,90 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "updated": "2026-09-10",
+  "title": "For Agents corpus record contract",
+  "notice": "This contract describes read-only source records. It is not an implementation, policy, deployment, legal, wallet, exchange, or operational interface.",
+  "record_contract": {
+    "required_resolved_fields": [
+      "id",
+      "kind",
+      "title",
+      "status",
+      "reviewed_at",
+      "claim_scope",
+      "presentation",
+      "era",
+      "source"
+    ],
+    "inheritance": "A collection may supply record_defaults. A record inherits only a missing field; an explicit record field always wins.",
+    "source": "A canonical direct source is expressed by source_url, url, sources[].url, or the collection source locator declared below.",
+    "status_values": [
+      "published",
+      "draft-for-review",
+      "observed",
+      "proposed",
+      "legacy",
+      "future-use-case",
+      "linked-external",
+      "linked-action-capable"
+    ],
+    "presentation_values": [
+      "html-summary",
+      "html-title-and-json-detail",
+      "json-only",
+      "source-linked"
+    ],
+    "era_values": [
+      "nexus-iroha-3",
+      "legacy-sora-v2",
+      "legacy-service-policy",
+      "external",
+      "mixed"
+    ]
+  },
+  "collections": {
+    "topics": {
+      "path": "/api/v1/topics.json",
+      "items": "topics",
+      "title_field": "title",
+      "source_locator": "sources[].url"
+    },
+    "atlas": {
+      "path": "/api/v1/atlas.json",
+      "items": "topics",
+      "title_field": "title",
+      "source_locator": "source_url"
+    },
+    "documents": {
+      "path": "/api/v1/documents.json",
+      "items": "documents",
+      "title_field": "title",
+      "source_locator": "source_url"
+    },
+    "ecosystem": {
+      "path": "/api/v1/ecosystem.json",
+      "items": "access",
+      "title_field": "label",
+      "source_locator": "url"
+    },
+    "repositories": {
+      "path": "/api/v1/repositories.json",
+      "items": "repositories",
+      "title_field": "name",
+      "source_locator": "url"
+    },
+    "playlists": {
+      "path": "/api/v1/playlists.json",
+      "items": "catalog",
+      "title_field": "title",
+      "source_locator": "meta.channel"
+    },
+    "links": {
+      "path": "/api/v1/links.json",
+      "items": "links",
+      "title_field": "label",
+      "source_locator": "url"
+    }
+  }
+}

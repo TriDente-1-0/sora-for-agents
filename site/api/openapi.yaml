@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: SORA Nexus For Agents API
+  version: 0.1.0
+  description: Read-only source-record API served with this site.
+servers:
+  - url: /
+    description: Relative to the site host
+paths:
+  /api/v1/site.json:
+    get:
+      summary: Get API status
+      responses:
+        '200':
+          description: Site manifest
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [version, status, notice, access]
+  /api/v1/topics.json:
+    get:
+      summary: Get source-status-tagged protocol topics
+      responses:
+        '200': {description: Local topic records with canonical source URLs}
+  /api/v1/atlas.json:
+    get:
+      summary: Get complete structured SORA Nexus Atlas records
+      responses:
+        '200': {description: Long-form explanation, protocol sequence and semantic diagram topology for every Atlas topic}
+  /api/v1/documents.json:
+    get:
+      summary: Get detailed source-document records
+      responses:
+        '200': {description: Source-bound ecosystem, legacy, legal and whitepaper records; whitepaper and legal records are JSON-only in the human presentation}
+  /api/v1/whitepaper.json:
+    get:
+      summary: Get the JSON-only, section-by-section SORA Nexus whitepaper representation
+      responses:
+        '200': {description: Page-anchored whitepaper coverage with canonical PDF citation; the PDF remains canonical wording}
+  /api/v1/case-for-xor.json:
+    get:
+      summary: Get the JSON-only, section-by-section representation of The Case for XOR
+      responses:
+        '200': {description: Historical editorial document coverage with canonical PDF citation; the PDF remains canonical wording}
+  /api/v1/schema.json:
+    get:
+      summary: Get the shared source, status, and boundary record contract
+      responses:
+        '200': {description: Resolved-field contract and collection source locators for the read-only corpus}
+  /api/v1/links.json:
+    get:
+      summary: Get canonical outbound links including requested Iroha repository access
+      responses:
+        '200': {description: Local link registry}
+  /api/v1/ecosystem.json:
+    get:
+      summary: Get direct ecosystem destinations with their purpose and access boundary
+      responses:
+        '200': {description: Ecosystem access registry}
+  /api/v1/repositories.json:
+    get:
+      summary: Get repository roles and source-boundary declarations
+      responses:
+        '200': {description: Local repository registry}
+  /api/v1/playlists.json:
+    get:
+      summary: Get screenshot-observed YouTube playlist catalogue
+      responses:
+        '200': {description: Observed catalogue, refresh-required before release}
+  /api/v1/status.json:
+    get:
+      summary: Get operational status and release gaps
+      responses:
+        '200': {description: Read-only site status}
+  /for-agents/topics.md:
+    get:
+      summary: Get a human and agent-readable topic index
+      responses:
+        '200':
+          description: Markdown topic index
+          content:
+            text/markdown: {}
