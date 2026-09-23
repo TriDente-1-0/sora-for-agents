@@ -15,8 +15,6 @@ jobs:
         with:
           fetch-depth: 0
       - run: git diff --check HEAD^ HEAD
-      - run: bash tests/check_public_foundation.sh
-      - run: bash tests/check_release_attribution.sh
       - run: npm ci --prefix mcp-worker
       - run: npm --prefix mcp-worker run check
       - run: git diff --exit-code

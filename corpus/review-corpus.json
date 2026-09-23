@@ -1926,17 +1926,15 @@
       "role": "requested-upstream-source",
       "status": "published",
       "url": "https://github.com/hyperledger-iroha/iroha",
-      "default_branch": "refresh-before-release",
-      "license": "refresh-before-release",
       "claim_scope": "Canonical requested outbound repository; no claim about local forks or snapshots."
     },
     {
       "id": "sora-org",
       "name": "SORA source organisation",
-      "role": "ecosystem-registry",
-      "status": "proposed",
+      "role": "source-organisation",
+      "status": "published",
       "url": "https://github.com/sora-xor",
-      "claim_scope": "Directory entry only. Roles, branches, licenses and active state require periodic verification."
+      "claim_scope": "Direct source-organisation entry point; verify repository-specific details at the referenced repository."
     }
   ],
   "links": [
