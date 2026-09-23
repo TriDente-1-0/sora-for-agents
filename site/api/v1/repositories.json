@@ -1,0 +1,30 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "kind": "source-repository",
+    "era": "external",
+    "reviewed_at": "2026-09-10",
+    "presentation": "source-linked",
+    "claim_scope": "Repository reference only; verify branches, licences, activity, and implementation details at the direct source."
+  },
+  "repositories": [
+    {
+      "id": "hyperledger-iroha-upstream",
+      "name": "Hyperledger Iroha",
+      "role": "requested-upstream-source",
+      "status": "published",
+      "url": "https://github.com/hyperledger-iroha/iroha",
+      "claim_scope": "Canonical requested outbound repository; no claim about local forks or snapshots."
+    },
+    {
+      "id": "sora-org",
+      "name": "SORA source organisation",
+      "role": "source-organisation",
+      "status": "published",
+      "url": "https://github.com/sora-xor",
+      "claim_scope": "Direct source-organisation entry point; verify repository-specific details at the referenced repository."
+    }
+  ]
+}

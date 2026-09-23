@@ -1,0 +1,8 @@
+/* Footer mirrors the header brand while keeping corpus metadata visually centered. */
+footer{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;gap:1.5rem!important}
+footer .footer-brand{display:flex;align-items:center;gap:.55rem;color:#fff;font-weight:800;line-height:.93;letter-spacing:.04em;text-decoration:none;justify-self:start}
+footer .footer-brand i{color:#df4b50;font-size:2rem;font-style:normal}
+footer .footer-brand small{font-size:.47rem;font-weight:700;color:#b8c6c8;letter-spacing:.16em}
+footer .footer-meta{margin:0;color:#b8c6c8;font-size:.61rem;font-weight:700;letter-spacing:.1em;line-height:1.45;text-align:center;white-space:nowrap}
+footer>a:last-child{justify-self:end;font-size:.75rem}
+@media(max-width:760px){footer{grid-template-columns:1fr!important;justify-items:start!important;gap:.9rem!important}footer .footer-meta{white-space:normal;text-align:left}footer>a:last-child{justify-self:start}}

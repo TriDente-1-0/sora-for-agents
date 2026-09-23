@@ -1,0 +1,158 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "kind": "ecosystem-destination",
+    "era": "external",
+    "reviewed_at": "2026-09-10",
+    "presentation": "source-linked",
+    "claim_scope": "Direct external source for orientation only; this corpus does not initiate or authorize an external action."
+  },
+  "access": [
+    {
+      "id": "sorametrics",
+      "label": "SoraMetrics · block explorer and analytics",
+      "url": "https://sorametrics.org/",
+      "category": "network-observability",
+      "status": "linked-external",
+      "summary": "Independent SORA analytics interface. It presents separate paths for the Substrate SORA v2 mainnet, the Iroha 3 Nexus / Minamoto mainnet, and a forthcoming marketplace; it also presents XOR migration indicators.",
+      "claim_scope": "Live analytics and counts belong to SoraMetrics and change over time. This corpus does not reproduce them or treat the service as a SORA operational API."
+    },
+    {
+      "id": "cbdc",
+      "label": "CBDC",
+      "url": "https://sora.org/cbdc",
+      "category": "institutional-information",
+      "status": "published",
+      "summary": "Information on SORA infrastructure for tokenized assets and policy-governed digital-currency workflows.",
+      "claim_scope": "Informational page; jurisdictional, regulatory and operational suitability must be assessed independently."
+    },
+    {
+      "id": "wallet",
+      "label": "SORA Wallet",
+      "url": "https://sora.org/wallet",
+      "category": "wallet",
+      "status": "linked-action-capable",
+      "summary": "Self-custodial mobile wallet for SORA ecosystem assets, sending, receiving, swaps and liquidity integrations.",
+      "claim_scope": "Linked for orientation only. This reading corpus never initiates wallet, swap or liquidity activity."
+    },
+    {
+      "id": "polkaswap",
+      "label": "Polkaswap",
+      "url": "https://sora.org/polkaswap",
+      "category": "Decentralized exchange (DEX)",
+      "status": "linked-action-capable",
+      "summary": "Decentralized exchange (DEX) information covering cross-chain swaps, liquidity, bridge routes and order-book trading on SORA.",
+      "claim_scope": "Linked for orientation only. The For Agents corpus provides no trading, routing or transaction tool."
+    },
+    {
+      "id": "sora-tokens",
+      "label": "SORA ecosystem tokens",
+      "url": "https://sora.org/soratokens",
+      "category": "token-catalogue",
+      "status": "published",
+      "summary": "Catalogue page naming XOR, VAL, PSWAP and additional ecosystem tokens.",
+      "claim_scope": "A catalogue is not a price feed, investment view, availability guarantee or recommendation."
+    },
+    {
+      "id": "wiki",
+      "label": "SORA Wiki",
+      "url": "https://wiki.sora.org/",
+      "category": "documentation",
+      "status": "linked-external",
+      "summary": "Community documentation and entry point for users and builders, covering the SORA ecosystem, economy and technical materials.",
+      "claim_scope": "A live wiki can change; cite the page and revision consulted for technical claims."
+    },
+    {
+      "id": "build",
+      "label": "Build on SORA",
+      "url": "https://wiki.sora.org/build.html",
+      "category": "developer-documentation",
+      "status": "linked-external",
+      "summary": "Builder documentation hub hosted in the SORA Wiki.",
+      "claim_scope": "Follow the referenced documentation for current implementation instructions."
+    },
+    {
+      "id": "builders",
+      "label": "SORA Builders Programme",
+      "url": "https://sora.org/builders",
+      "category": "ecosystem-support",
+      "status": "published",
+      "summary": "Programme information covering mentorship, grants and ecosystem support for teams.",
+      "claim_scope": "Programme terms, eligibility, timelines and availability are controlled by the linked programme page."
+    },
+    {
+      "id": "validator",
+      "label": "SORA Validator Guide",
+      "url": "https://sora.org/validator",
+      "category": "network-participation",
+      "status": "linked-action-capable",
+      "summary": "Information for operators and nominators about validator infrastructure, stake-weighted selection and operational requirements.",
+      "claim_scope": "Network participation has operational and financial consequences. This corpus neither advises nor performs registration, nomination or staking."
+    },
+    {
+      "id": "brand-assets",
+      "label": "SORA Brand Assets",
+      "url": "https://github.com/sora-xor/sora-branding",
+      "category": "brand-resources",
+      "status": "linked-external",
+      "summary": "Open-source repository for SORA brand resources.",
+      "claim_scope": "Consult the repository for current licence and use conditions."
+    },
+    {
+      "id": "github",
+      "label": "SORA GitHub",
+      "url": "https://github.com/sora-xor",
+      "category": "Open source",
+      "status": "linked-external",
+      "summary": "Open-source organisation and public repository directory for SORA protocol, ecosystem and brand projects.",
+      "claim_scope": "Repository activity, branches and licences must be verified at the referenced repository."
+    },
+    {
+      "id": "youtube-channel",
+      "label": "SORA YouTube",
+      "url": "https://www.youtube.com/sora_xor",
+      "category": "social-video",
+      "status": "linked-external",
+      "summary": "SORA’s YouTube channel and playlists.",
+      "claim_scope": "Video availability, counts and transcript coverage change; use the video or transcript itself as evidence."
+    },
+    {
+      "id": "reddit",
+      "label": "SORA Reddit",
+      "url": "https://www.reddit.com/r/SORA/",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community discussion forum.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    },
+    {
+      "id": "x",
+      "label": "SORA on X",
+      "url": "https://twitter.com/sora_xor",
+      "category": "social",
+      "status": "linked-external",
+      "summary": "Social updates channel.",
+      "claim_scope": "Time-sensitive social content must be attributed and dated before reuse."
+    },
+    {
+      "id": "telegram",
+      "label": "SORA Telegram",
+      "url": "https://qrcodes.pro/piEv7h",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community channel for SORA discussion and updates.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    },
+    {
+      "id": "discord",
+      "label": "SORA Discord",
+      "url": "https://discord.gg/",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community channel for SORA discussion and updates.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    }
+  ]
+}

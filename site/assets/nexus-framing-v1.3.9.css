@@ -1,0 +1,5 @@
+/* Keep published-source framing emphatic without overwhelming the supporting sources. */
+.nexus-framing h2{font-size:clamp(2.8rem,5.05vw,5.25rem)!important;max-width:970px!important}
+.nexus-framing .contributor-note{max-width:800px!important;margin-top:1.15rem!important;color:#fff!important;font-size:1.02rem!important;line-height:1.55!important}
+.nexus-framing .source-links{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.55rem!important}
+.nexus-framing .source-links a{margin-top:0!important}

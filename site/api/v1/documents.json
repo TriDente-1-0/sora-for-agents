@@ -1,0 +1,341 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "era": "nexus-iroha-3",
+    "reviewed_at": "2026-09-10",
+    "presentation": "html-summary",
+    "claim_scope": "Read-only source record only; consult the linked canonical source for current information."
+  },
+  "updated": "2026-09-10",
+  "notice": "Complete source-index records. This corpus is read-only and does not provide wallet, exchange, validator, application, or legal-advice functions.",
+  "documents": [
+    {
+      "id": "sora-nexus-whitepaper",
+      "kind": "primary-document",
+      "status": "draft-for-review",
+      "era": "nexus-iroha-3",
+      "title": "SORA Nexus whitepaper",
+      "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+      "content_url": "/api/v1/whitepaper.json",
+      "presentation": "json-only",
+      "claim_scope": "Canonical source document. Its presence here is an index record, not a product, deployment, or availability claim. The JSON companion is a section-by-section representation; the PDF remains the canonical wording."
+    },
+    {
+      "id": "builders-programme",
+      "kind": "ecosystem-service",
+      "status": "published",
+      "title": "SORA Builders Programme",
+      "source_url": "https://sora.org/builders",
+      "html_summary": "A programme page describing mentorship, grants, incubation and porting support for teams building or migrating products. Participation, timelines, eligibility and funding remain controlled by the source programme.",
+      "sections": [
+        {
+          "title": "Programme purpose",
+          "content": "Practical product development with technical guidance, feedback loops and ecosystem collaboration."
+        },
+        {
+          "title": "Use-case catalogue",
+          "content": "The page lists peer-to-peer exchange, stablecoin borrowing, tokenisation, marketplaces, payroll, CBDC/debt instruments, land registry, sustainability and supply-chain tracing."
+        },
+        {
+          "title": "Application path",
+          "content": "Application, review, preparation and product-launch stages are described; the live page says timing may vary by applicant and scope."
+        },
+        {
+          "title": "Support",
+          "content": "Project incubation, porting assistance and financial backing are described as programme support areas."
+        }
+      ],
+      "claim_scope": "Informational only. It is not an application form, grant commitment or programme eligibility decision."
+    },
+    {
+      "id": "cbdc",
+      "kind": "ecosystem-service",
+      "status": "published",
+      "title": "SORA for CBDC",
+      "source_url": "https://sora.org/cbdc",
+      "html_summary": "A source page on tokenised assets and policy-governed digital-currency workflows. It describes evaluation and proof-of-concept context, not a current central-bank deployment offer.",
+      "sections": [
+        {
+          "title": "Infrastructure",
+          "content": "The page describes configurable governance, throughput and integration considerations for tokenised-asset and CBDC-related workflows."
+        },
+        {
+          "title": "XORless swaps",
+          "content": "It describes an onboarding mechanism intended to bridge assets without first acquiring XOR."
+        },
+        {
+          "title": "Jurisdiction and remittances",
+          "content": "Policy controls and cross-jurisdiction remittance workflows are presented as subject to institutional, regulatory and operational design."
+        },
+        {
+          "title": "Bokolo Cash",
+          "content": "The page describes a proof-of-concept involving wallet transfer and QR-payment experiments over Substrate infrastructure, with future interoperability dependent on further agreements."
+        }
+      ],
+      "claim_scope": "Not a regulatory approval, institutional integration, or availability statement."
+    },
+    {
+      "id": "sora-wallet",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "SORA Wallet",
+      "source_url": "https://sora.org/wallet",
+      "html_summary": "A self-custodial mobile-wallet source page describing accounts, asset custody, transfers, swaps and liquidity integrations. This reading surface never initiates any of those actions.",
+      "sections": [
+        {
+          "title": "Accounts",
+          "content": "Create or import SORA network accounts."
+        },
+        {
+          "title": "Asset management",
+          "content": "Hold, send and receive supported SORA ecosystem tokens with local-device security controls."
+        },
+        {
+          "title": "Swaps and liquidity",
+          "content": "The page describes Polkaswap routing, supported liquidity pools and connected farming products where available."
+        },
+        {
+          "title": "Support and programmes",
+          "content": "The source also describes community support and referral rewards subject to current programme terms."
+        }
+      ],
+      "claim_scope": "Orientation only; not a wallet connection, transaction request, asset recommendation or programme guarantee."
+    },
+    {
+      "id": "polkaswap",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "Polkaswap",
+      "source_url": "https://sora.org/polkaswap",
+      "html_summary": "A source page for a cross-chain decentralised-exchange experience. It is indexed for context only; this corpus does not quote prices, provide routing, or execute trades.",
+      "sections": [
+        {
+          "title": "Exchange model",
+          "content": "The source describes cross-chain swaps and routing across liquidity sources."
+        },
+        {
+          "title": "Liquidity",
+          "content": "It describes liquidity provision, pools and connected ecosystem routes."
+        },
+        {
+          "title": "Trading context",
+          "content": "The live page presents swapping and order-book-related features as external-service information."
+        }
+      ],
+      "claim_scope": "No price, trading, liquidity, bridge, route or execution claim is made by this corpus."
+    },
+    {
+      "id": "sora-ecosystem-tokens",
+      "kind": "token-catalogue",
+      "status": "published",
+      "title": "SORA ecosystem tokens",
+      "source_url": "https://sora.org/soratokens",
+      "html_summary": "A source catalogue for XOR, VAL, PSWAP, XST and other named ecosystem tokens. It is contextual reference material, never market data or an investment view.",
+      "sections": [
+        {
+          "title": "XOR",
+          "content": "The source presents XOR in the SORA ecosystem and its economic/governance context."
+        },
+        {
+          "title": "VAL and PSWAP",
+          "content": "The source describes validator and exchange-related token roles."
+        },
+        {
+          "title": "Additional catalogue entries",
+          "content": "The page also identifies XST and other ecosystem-token concepts."
+        }
+      ],
+      "claim_scope": "Not a price feed, token listing guarantee, investment recommendation or offer."
+    },
+    {
+      "id": "sora-validator-guide",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "SORA Validator Guide",
+      "source_url": "https://sora.org/validator",
+      "html_summary": "A source page for validator operators and nominators. It is indexed for operational context only; this corpus neither advises nor performs staking, nomination, registration, or node operation.",
+      "sections": [
+        {
+          "title": "Participation",
+          "content": "The page describes validator and nominator participation in the SORA network."
+        },
+        {
+          "title": "Selection and operations",
+          "content": "It describes stake-weighted selection, infrastructure and operational requirements."
+        },
+        {
+          "title": "Risk boundary",
+          "content": "Network participation and token-related actions remain external decisions with operational and financial consequences."
+        }
+      ],
+      "claim_scope": "Not operational advice, a staking instruction, a nomination request or a reward claim."
+    },
+    {
+      "id": "nexus-live-framing",
+      "kind": "primary-web-framing",
+      "status": "published",
+      "era": "nexus-iroha-3",
+      "title": "SORA Nexus live-site framing",
+      "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+      "html_summary": "The live site frames the current material through sovereign money, permissioned software and a common protocol for the CBDC era and an emerging agent economy.",
+      "sections": [
+        {
+          "title": "Published framing",
+          "content": "Sovereign money. Permissioned software. One protocol."
+        },
+        {
+          "title": "Entry statement",
+          "content": "The CBDC era—and the emerging agent economy—need a common protocol. SORA Nexus is building it on Hyperledger Iroha 3."
+        }
+      ],
+      "claim_scope": "Source framing only; it does not add a performance, availability, commercial, or deployment claim."
+    },
+    {
+      "id": "soramitsu-bokolo-cash",
+      "kind": "linked-project-source",
+      "status": "published",
+      "era": "nexus-iroha-3",
+      "title": "Bokolo Cash",
+      "source_url": "https://soramitsu.co.jp/bokolo-cash",
+      "html_summary": "Soramitsu, a SORA technology contributor, works with central banks on infrastructure for tokenized assets and CBDC-related services.",
+      "sections": [
+        {
+          "title": "Contributor context",
+          "content": "The source presents Bokolo Cash as a Soramitsu project; this record does not represent a policy, deployment, or performance claim by the For Agents corpus."
+        }
+      ],
+      "claim_scope": "Contributor context only; consult the linked project source for current project information."
+    },
+    {
+      "id": "makoto-cbdc-architecture-article",
+      "kind": "linked-editorial-source",
+      "status": "observed",
+      "title": "CBDCs Are Not the Beast. Bad Architecture Is.",
+      "subtitle": "The life-giving ledger, SORA Nexus, and the constitutional design of digital money",
+      "author": "Makoto Takemiya",
+      "author_handle": "@M4K070",
+      "author_role": "SORA Contributor",
+      "published_at": "2026-06-22",
+      "source_url": "https://x.com/M4K070/status/2068994860665991647",
+      "html_summary": "A SORA Contributor editorial on the constitutional design of digital money. It argues that the relevant question is how identity, visibility, rule-making, enforcement and appeal powers are separated and bounded.",
+      "sections": [
+        {
+          "title": "Architecture rather than label",
+          "content": "The essay argues that a CBDC is monetary infrastructure, and that risks arise from architecture, governance and limits on power rather than the acronym alone."
+        },
+        {
+          "title": "Separated powers",
+          "content": "It distinguishes identity from transaction validity, issuance from retail service, compliance from omniscience, settlement from surveillance, and governance from arbitrary administration."
+        },
+        {
+          "title": "Operational example",
+          "content": "It discusses Bakong’s two-tier structure as a model in which central infrastructure and customer-facing institutions retain distinct functions."
+        },
+        {
+          "title": "Nexus context",
+          "content": "It connects shared settlement, data spaces, lanes, deterministic execution, canonical encoding, proofs and institutional messaging to bounded visibility and accountable intervention."
+        },
+        {
+          "title": "Constitutional choice",
+          "content": "It contrasts refusal, managerial convenience and constitutional digital money, with explicit processes, constrained authority and auditable interventions."
+        }
+      ],
+      "claim_scope": "Attributed editorial source. The For Agents corpus indexes its architecture themes and preserves its source link; it does not restate it as protocol specification or policy."
+    },
+    {
+      "id": "sora2-legacy-ecosystem",
+      "kind": "legacy-source-document",
+      "status": "legacy",
+      "era": "legacy-sora-v2",
+      "title": "SORA Legacy Ecosystem Overview",
+      "source_url": "https://sora.org/sora2",
+      "html_summary": "Legacy SORA ecosystem material. It describes the prior SORA ecosystem experience; for the current Hyperledger Iroha 3 engineering track, see SORA Nexus.",
+      "sections": [
+        {
+          "title": "Legacy framing",
+          "content": "The source explicitly identifies itself as a legacy SORA ecosystem overview and distinguishes it from the current SORA Nexus/Iroha 3 track."
+        },
+        {
+          "title": "Economic narrative",
+          "content": "It describes XOR-oriented bonding-curve, governance, funding and policy narratives."
+        },
+        {
+          "title": "Legacy ecosystem",
+          "content": "It references legacy DeFi, CBDC, synthetic-asset, wallet, governance and community routes."
+        }
+      ],
+      "claim_scope": "Historical context only. Do not combine it with Nexus claims or imply interoperability, continuity, deployment, availability, or token-performance outcomes."
+    },
+    {
+      "id": "case-for-xor",
+      "kind": "historical-editorial-document",
+      "status": "observed",
+      "era": "legacy-sora-v2",
+      "title": "The Case for XOR",
+      "author": "Makoto Takemiya",
+      "source_url": "https://sora.org/assets/how-sora-works/the-case-for-xor.pdf",
+      "content_url": "/api/v1/case-for-xor.json",
+      "presentation": "json-only",
+      "claim_scope": "Attributed historical economic argument. It is not current SORA Nexus policy, financial advice, a legal-tender proposal, an implementation plan, or a claim about token value, performance, or availability."
+    },
+    {
+      "id": "privacy-policy",
+      "kind": "legal-source-document",
+      "status": "published",
+      "era": "legacy-service-policy",
+      "title": "Privacy Policy",
+      "effective_date": "2021-03-17",
+      "source_url": "https://sora.org/privacy",
+      "presentation": "json-only",
+      "sections": [
+        {
+          "title": "Controller and service context",
+          "content": "The source identifies Soramitsu entities and describes the SORA app/service context."
+        },
+        {
+          "title": "Collection and use",
+          "content": "It enumerates personal-information categories and purposes including service operation, identity verification, transactions, KYC availability, fraud prevention and activity tracking."
+        },
+        {
+          "title": "Retention, logs and cookies",
+          "content": "It describes retention, diagnostic log data, cookie treatment and third-party service-provider context."
+        },
+        {
+          "title": "Identification and security",
+          "content": "It describes request signatures, local private-key handling, security limitations and legal disclosure conditions."
+        },
+        {
+          "title": "Rights and contacts",
+          "content": "It includes links, children’s privacy, change handling, controller/DPO details and supervisory-authority contact information."
+        }
+      ],
+      "claim_scope": "Legal source record only. It is not Nexus policy, legal advice, a current compliance attestation or a substitute for the linked policy."
+    },
+    {
+      "id": "terms-eula",
+      "kind": "legal-source-document",
+      "status": "published",
+      "era": "legacy-service-policy",
+      "title": "End User License Agreement",
+      "source_url": "https://sora.org/terms",
+      "presentation": "json-only",
+      "sections": [
+        {
+          "title": "Agreement and acceptance",
+          "content": "The source defines the agreement between Soramitsu and the person using the application/platform, including acceptance and authority conditions."
+        },
+        {
+          "title": "Service terms",
+          "content": "It sets licence, use, eligibility and service conditions for the referenced application and platform."
+        },
+        {
+          "title": "Related policies",
+          "content": "It links privacy treatment and incorporates the source’s own definitions and conditions."
+        }
+      ],
+      "claim_scope": "Legal source record only. It is not a Nexus licence, a user agreement acceptance flow, or legal advice."
+    }
+  ]
+}

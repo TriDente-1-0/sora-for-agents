@@ -1,49 +1,2208 @@
 {
-  "meta": {"title":"SORA Nexus — For Agents","status":"local-review","language":"en","corpus_version":"v1.2.0-local","updated":"2026-09-08","canonical_site":"https://sora.org/","claim_policy":"Preserve status, sources, claim_scope, and review date in every reuse."},
+  "meta": {
+    "title": "SORA Nexus — For Agents",
+    "status": "published",
+    "language": "en",
+    "corpus_version": "v1.4.0",
+    "updated": "2026-09-10",
+    "canonical_site": "https://sora.org/",
+    "claim_policy": "Preserve source_url, status, claim_scope, era, presentation, and review date in every reuse."
+  },
+  "record_contract": {
+    "required_resolved_fields": [
+      "id",
+      "kind",
+      "title",
+      "status",
+      "reviewed_at",
+      "claim_scope",
+      "presentation",
+      "era",
+      "source"
+    ],
+    "inheritance": "A collection may supply record_defaults. A record inherits only a missing field; an explicit record field always wins.",
+    "source": "A canonical direct source is expressed by source_url, url, sources[].url, or the collection source locator declared below.",
+    "status_values": [
+      "published",
+      "draft-for-review",
+      "observed",
+      "proposed",
+      "legacy",
+      "future-use-case",
+      "linked-external",
+      "linked-action-capable"
+    ],
+    "presentation_values": [
+      "html-summary",
+      "html-title-and-json-detail",
+      "json-only",
+      "source-linked"
+    ],
+    "era_values": [
+      "nexus-iroha-3",
+      "legacy-sora-v2",
+      "legacy-service-policy",
+      "external",
+      "mixed"
+    ]
+  },
   "topics": [
-    {"id":"sovereign-data-spaces","kind":"protocol-explainer","title":"Sovereign data spaces","category":"Interoperability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not a claim of deployed availability.","summary":"Policy-scoped spaces retain local authority, visibility, admission, privacy, and validator boundaries while approved value and evidence can coordinate across one logical ledger.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"amx-atomic-transactions","kind":"protocol-explainer","title":"Cross-data-space atomic transactions","category":"Interoperability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Published-page paraphrase. Diagram topology is an observed transcription of the supplied screenshot, not independent protocol specification.","summary":"An AMX transaction declares participating spaces and read/write sets. Each space prepares against a common snapshot; Nexus commits only when every required result is valid, otherwise it aborts without partial effects.","sources":[{"url":"https://sora.org/","type":"primary-web"},{"source":"supplied screenshot 2026-09-08","type":"observed-visual"}],"diagram":{"id":"amx-2pc","status":"observed","caption":"Two data spaces prepare independently; a 2-of-2 Nexus latch allows atomic delivery and payment or restores both roots.","text_equivalent":"Data space A stages A0 to A1 and returns Prepare QC A. Data space B stages B0 to B1 and returns Prepare QC B. The Nexus latch shows 2/2 prepared. Payment A to B and delivery B to A lock together. All valid evidence commits both; any failed proof or policy restores both roots.","nodes":[{"id":"space-a","label":"Data Space A / CBDC A"},{"id":"prepare-a","label":"Prepare QC A"},{"id":"nexus","label":"Nexus latch / 2 of 2 prepared"},{"id":"prepare-b","label":"Prepare QC B"},{"id":"space-b","label":"Data Space B / CBDC B"},{"id":"commit","label":"Commit A + B"},{"id":"rollback","label":"Roll back A + B"}],"edges":[{"from":"space-a","to":"prepare-a","relation":"stages"},{"from":"prepare-a","to":"nexus","relation":"prepares"},{"from":"space-b","to":"prepare-b","relation":"stages"},{"from":"prepare-b","to":"nexus","relation":"prepares"},{"from":"nexus","to":"commit","relation":"all-valid"},{"from":"nexus","to":"rollback","relation":"any-failure"}]}},
-    {"id":"iroha-3-core","kind":"protocol-explainer","title":"Hyperledger Iroha 3 Core","category":"Execution","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"SORA-page description; code provenance is provided separately in the repository registry.","summary":"SORA Nexus describes Iroha 3 as its deterministic execution core: Torii admits traffic, Kotodama compiles high-level programs, IVM executes bounded logic, and Sumeragi/Kura preserve canonical history.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"sumeragi-finality","kind":"protocol-explainer","title":"Sumeragi consensus","category":"Finality","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"SORA-page paraphrase; not an independent implementation audit.","summary":"Prepare and Commit quorum certificates bind finality to an exact block subject and frozen validator context; portable commit evidence can be independently checked against trusted context.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"agent-economy","kind":"future-use-case","title":"A shared economy for AI agents","category":"Future use case","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"The SORA page calls this a future use case. It is not a product availability, autonomy, wallet, payment, or integration claim.","summary":"The page presents future machine-to-machine exchange using accounts, assets, permissions, automation, atomic delivery, receipts, and human-defined authority. It explicitly says Iroha does not run AI models or grant unrestricted autonomy.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"iso-20022-gateway","kind":"protocol-explainer","title":"ISO 20022 Gateway","category":"Interoperability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an integration, deployment or regulatory-approval claim.","summary":"The page describes a path in which pacs.008 and pacs.009 payment messages are validated at Torii, mapped to ledger-native instructions, and answered with a deterministic pacs.002 status.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"settlement-router","kind":"protocol-explainer","title":"Deterministic settlement router","category":"Interoperability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not a live pricing, reserve or settlement-service claim.","summary":"The page presents deterministic quantity conversion, margins, haircuts and lane-specific buffer policy, with lane commitments, receipts and telemetry for reconciliation.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"lanes-merge-ledger","kind":"protocol-explainer","title":"Lanes + Merge Ledger","category":"Execution","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an independent performance benchmark.","summary":"Independent workloads execute in parallel lanes and their certified commitments converge into one canonical merge-ledger history.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"runtime-lane-lifecycle","kind":"protocol-explainer","title":"Runtime lane lifecycle","category":"Execution","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an instruction to alter network topology.","summary":"The page describes authorized, signed lifecycle changes that add, replace or retire capacity through a committed lane catalogue and safety gates.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"verifiable-finality-proofs","kind":"protocol-explainer","title":"Verifiable finality proofs","category":"Finality","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; trusted chain context remains an external verifier responsibility.","summary":"A portable finality proof combines a canonical header, execution commitment, Commit QC, frozen roster and proofs of possession, then binds to independently trusted chain context.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"kotodama-ivm","kind":"protocol-explainer","title":"Kotodama Programs","category":"Programmability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an executable-programming interface.","summary":"The page describes readable Kotodama programs compiling to bounded IVM bytecode so validators use the same deterministic runtime.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"iroha-special-instructions","kind":"protocol-explainer","title":"Iroha Special Instructions","category":"Programmability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it never authorizes any ledger operation.","summary":"Typed native instructions cover asset definitions, minting, transfer, permissions and supply changes; ordered batches stage dependent changes as one result or discard them together.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"capability-manifests","kind":"protocol-explainer","title":"Capability manifests","category":"Programmability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an access grant or policy decision.","summary":"The page describes data-space authority scoped by program, method, asset and role, with activation, expiry, amount limits, allowance windows and deny-wins rules.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"on-chain-automation","kind":"protocol-explainer","title":"On-Chain Automation","category":"Programmability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; no automated action can be triggered by this corpus.","summary":"A registered trigger holds one executable, event filter, authority and repeat policy; permissions and bounded runtime controls constrain execution and record its outcome.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"norito-codec","kind":"protocol-explainer","title":"Norito Codec","category":"Programmability","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an independent codec conformance test.","summary":"Typed values are encoded in schema-bound frames with version, schema hash, compression, length, integrity checksum and layout metadata for exact validation and reconstruction.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"soranet-sorafs","kind":"protocol-explainer","title":"SoraNet + SoraFS","category":"Ecosystem extension","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it does not make a storage, relay, payment or availability guarantee.","summary":"The page presents a blinded relay path and content-addressed retrieval in which manifests bind chunks, order, length and digests before verified reconstruction.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"fastpq-proof-pipeline","kind":"protocol-explainer","title":"FASTPQ Proof Pipeline","category":"Privacy","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not a privacy or compliance certification.","summary":"The page describes private execution commitments becoming proof inputs so public admission can verify required evidence without receiving the complete private trace.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"privacy-proof-admission","kind":"protocol-explainer","title":"Privacy-proof admission","category":"Privacy","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not a proof-verification service.","summary":"Lane manifests register commitments or proof descriptors; admission checks a supplied witness against the routed lane registry and fails closed if accepted evidence is absent.","sources":[{"url":"https://sora.org/","type":"primary-web"}]},
-    {"id":"data-availability","kind":"protocol-explainer","title":"Data Availability & Proofs","category":"Privacy","status":"published","published_at":"2026-09-08","reviewed_at":"2026-09-08","claim_scope":"Paraphrase of the cited SORA page; it is not an availability SLA or retrieval guarantee.","summary":"The page presents recoverable committed history through sharding, sampling and reconstruction so proofs remain connected to retrievable data.","sources":[{"url":"https://sora.org/","type":"primary-web"}]}
+    {
+      "id": "sovereign-data-spaces",
+      "kind": "protocol-explainer",
+      "title": "Sovereign data spaces",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a claim of deployed availability.",
+      "summary": "Policy-scoped spaces retain local authority, visibility, admission, privacy, and validator boundaries while approved value and evidence can coordinate across one logical ledger.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "amx-atomic-transactions",
+      "kind": "protocol-explainer",
+      "title": "Cross-data-space atomic transactions",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Published-page paraphrase. Diagram topology is an observed transcription of the supplied screenshot, not independent protocol specification.",
+      "summary": "An AMX transaction declares participating spaces and read/write sets. Each space prepares against a common snapshot; Nexus commits only when every required result is valid, otherwise it aborts without partial effects.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        },
+        {
+          "source": "supplied screenshot 2026-09-08",
+          "type": "observed-visual"
+        }
+      ],
+      "diagram": {
+        "id": "amx-2pc",
+        "status": "observed",
+        "caption": "Two data spaces prepare independently; a 2-of-2 Nexus latch allows atomic delivery and payment or restores both roots.",
+        "text_equivalent": "Data space A stages A0 to A1 and returns Prepare QC A. Data space B stages B0 to B1 and returns Prepare QC B. The Nexus latch shows 2/2 prepared. Payment A to B and delivery B to A lock together. All valid evidence commits both; any failed proof or policy restores both roots.",
+        "nodes": [
+          {
+            "id": "space-a",
+            "label": "Data Space A / CBDC A"
+          },
+          {
+            "id": "prepare-a",
+            "label": "Prepare QC A"
+          },
+          {
+            "id": "nexus",
+            "label": "Nexus latch / 2 of 2 prepared"
+          },
+          {
+            "id": "prepare-b",
+            "label": "Prepare QC B"
+          },
+          {
+            "id": "space-b",
+            "label": "Data Space B / CBDC B"
+          },
+          {
+            "id": "commit",
+            "label": "Commit A + B"
+          },
+          {
+            "id": "rollback",
+            "label": "Roll back A + B"
+          }
+        ],
+        "edges": [
+          {
+            "from": "space-a",
+            "to": "prepare-a",
+            "relation": "stages"
+          },
+          {
+            "from": "prepare-a",
+            "to": "nexus",
+            "relation": "prepares"
+          },
+          {
+            "from": "space-b",
+            "to": "prepare-b",
+            "relation": "stages"
+          },
+          {
+            "from": "prepare-b",
+            "to": "nexus",
+            "relation": "prepares"
+          },
+          {
+            "from": "nexus",
+            "to": "commit",
+            "relation": "all-valid"
+          },
+          {
+            "from": "nexus",
+            "to": "rollback",
+            "relation": "any-failure"
+          }
+        ]
+      }
+    },
+    {
+      "id": "iroha-3-core",
+      "kind": "protocol-explainer",
+      "title": "Hyperledger Iroha 3 Core",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "SORA-page description; code provenance is provided separately in the repository registry.",
+      "summary": "SORA Nexus describes Iroha 3 as its deterministic execution core: Torii admits traffic, Kotodama compiles high-level programs, IVM executes bounded logic, and Sumeragi/Kura preserve canonical history.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "sumeragi-finality",
+      "kind": "protocol-explainer",
+      "title": "Sumeragi consensus",
+      "category": "Finality",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "SORA-page paraphrase; not an independent implementation audit.",
+      "summary": "Prepare and Commit quorum certificates bind finality to an exact block subject and frozen validator context; portable commit evidence can be independently checked against trusted context.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "agent-economy",
+      "kind": "future-use-case",
+      "title": "A shared economy for AI agents",
+      "category": "Future use case",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "The SORA page calls this a future use case. It is not a product availability, autonomy, wallet, payment, or integration claim.",
+      "summary": "The page presents future machine-to-machine exchange using accounts, assets, permissions, automation, atomic delivery, receipts, and human-defined authority. It explicitly says Iroha does not run AI models or grant unrestricted autonomy.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "iso-20022-gateway",
+      "kind": "protocol-explainer",
+      "title": "ISO 20022 Gateway",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an integration, deployment or regulatory-approval claim.",
+      "summary": "The page describes a path in which pacs.008 and pacs.009 payment messages are validated at Torii, mapped to ledger-native instructions, and answered with a deterministic pacs.002 status.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "settlement-router",
+      "kind": "protocol-explainer",
+      "title": "Deterministic settlement router",
+      "category": "Interoperability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a live pricing, reserve or settlement-service claim.",
+      "summary": "The page presents deterministic quantity conversion, margins, haircuts and lane-specific buffer policy, with lane commitments, receipts and telemetry for reconciliation.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "lanes-merge-ledger",
+      "kind": "protocol-explainer",
+      "title": "Lanes + Merge Ledger",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an independent performance benchmark.",
+      "summary": "Independent workloads execute in parallel lanes and their certified commitments converge into one canonical merge-ledger history.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "runtime-lane-lifecycle",
+      "kind": "protocol-explainer",
+      "title": "Runtime lane lifecycle",
+      "category": "Execution",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an instruction to alter network topology.",
+      "summary": "The page describes authorized, signed lifecycle changes that add, replace or retire capacity through a committed lane catalogue and safety gates.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "verifiable-finality-proofs",
+      "kind": "protocol-explainer",
+      "title": "Verifiable finality proofs",
+      "category": "Finality",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; trusted chain context remains an external verifier responsibility.",
+      "summary": "A portable finality proof combines a canonical header, execution commitment, Commit QC, frozen roster and proofs of possession, then binds to independently trusted chain context.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "kotodama-ivm",
+      "kind": "protocol-explainer",
+      "title": "Kotodama Programs",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an executable-programming interface.",
+      "summary": "The page describes readable Kotodama programs compiling to bounded IVM bytecode so validators use the same deterministic runtime.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "iroha-special-instructions",
+      "kind": "protocol-explainer",
+      "title": "Iroha Special Instructions",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it never authorizes any ledger operation.",
+      "summary": "Typed native instructions cover asset definitions, minting, transfer, permissions and supply changes; ordered batches stage dependent changes as one result or discard them together.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "capability-manifests",
+      "kind": "protocol-explainer",
+      "title": "Capability manifests",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an access grant or policy decision.",
+      "summary": "The page describes data-space authority scoped by program, method, asset and role, with activation, expiry, amount limits, allowance windows and deny-wins rules.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "on-chain-automation",
+      "kind": "protocol-explainer",
+      "title": "On-Chain Automation",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; no automated action can be triggered by this corpus.",
+      "summary": "A registered trigger holds one executable, event filter, authority and repeat policy; permissions and bounded runtime controls constrain execution and record its outcome.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "norito-codec",
+      "kind": "protocol-explainer",
+      "title": "Norito Codec",
+      "category": "Programmability",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an independent codec conformance test.",
+      "summary": "Typed values are encoded in schema-bound frames with version, schema hash, compression, length, integrity checksum and layout metadata for exact validation and reconstruction.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "soranet-sorafs",
+      "kind": "protocol-explainer",
+      "title": "SoraNet + SoraFS",
+      "category": "Ecosystem extension",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it does not make a storage, relay, payment or availability guarantee.",
+      "summary": "The page presents a blinded relay path and content-addressed retrieval in which manifests bind chunks, order, length and digests before verified reconstruction.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "fastpq-proof-pipeline",
+      "kind": "protocol-explainer",
+      "title": "FASTPQ Proof Pipeline",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a privacy or compliance certification.",
+      "summary": "The page describes private execution commitments becoming proof inputs so public admission can verify required evidence without receiving the complete private trace.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "privacy-proof-admission",
+      "kind": "protocol-explainer",
+      "title": "Privacy-proof admission",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not a proof-verification service.",
+      "summary": "Lane manifests register commitments or proof descriptors; admission checks a supplied witness against the routed lane registry and fails closed if accepted evidence is absent.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    },
+    {
+      "id": "data-availability",
+      "kind": "protocol-explainer",
+      "title": "Data Availability & Proofs",
+      "category": "Privacy",
+      "status": "published",
+      "published_at": "2026-09-08",
+      "reviewed_at": "2026-09-08",
+      "claim_scope": "Paraphrase of the cited SORA page; it is not an availability SLA or retrieval guarantee.",
+      "summary": "The page presents recoverable committed history through sharding, sampling and reconstruction so proofs remain connected to retrievable data.",
+      "sources": [
+        {
+          "url": "https://sora.org/",
+          "type": "primary-web"
+        }
+      ]
+    }
   ],
+  "atlas": [
+    {
+      "id": "iso-20022-gateway",
+      "title": "ISO 20022 Gateway",
+      "section": "Interoperability",
+      "explanation": [
+        "pacs.008 and pacs.009 institutional payment messages enter through Torii.",
+        "Schema and policy validation map accepted messages to Iroha-native instructions and return deterministic pacs.002 status."
+      ],
+      "sequence": [
+        "Receive pacs.008 or pacs.009.",
+        "Validate schema and policy.",
+        "Execute the mapped Iroha instruction.",
+        "Return accepted, rejected or settled pacs.002 status."
+      ],
+      "diagram": {
+        "caption": "Institutional message ingress becomes deterministic ledger action and canonical status.",
+        "nodes": [
+          "Message",
+          "Torii bridge",
+          "Policy validation",
+          "Iroha ledger",
+          "Status API"
+        ],
+        "edges": [
+          [
+            "Message",
+            "Torii bridge"
+          ],
+          [
+            "Torii bridge",
+            "Policy validation"
+          ],
+          [
+            "Policy validation",
+            "Iroha ledger"
+          ],
+          [
+            "Iroha ledger",
+            "Status API"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sovereign-data-spaces",
+      "title": "Sovereign Data Spaces",
+      "section": "Interoperability",
+      "explanation": [
+        "Each space retains policy, visibility, admission, privacy and validator boundaries.",
+        "Only authorised value and evidence cross a boundary; the full private state does not."
+      ],
+      "sequence": [
+        "Apply local policy in public or restricted space.",
+        "Receive an explicitly authorised boundary request.",
+        "Coordinate approved evidence and value across the shared logical ledger."
+      ],
+      "diagram": {
+        "caption": "Separate public and restricted spaces operate under local policy while authorised flows cross an explicit boundary.",
+        "nodes": [
+          "Public space",
+          "Restricted space",
+          "Policy boundary",
+          "Authorised flow",
+          "Nexus"
+        ],
+        "edges": [
+          [
+            "Public space",
+            "Policy boundary"
+          ],
+          [
+            "Restricted space",
+            "Policy boundary"
+          ],
+          [
+            "Policy boundary",
+            "Authorised flow"
+          ],
+          [
+            "Authorised flow",
+            "Nexus"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "amx-atomic-transactions",
+      "title": "Cross-data-space atomic transactions",
+      "section": "Interoperability",
+      "explanation": [
+        "An AMX transaction declares spaces and read/write sets against one authority snapshot.",
+        "All participants prepare and provide valid evidence before both state transitions commit; any failure restores both roots."
+      ],
+      "sequence": [
+        "Declare spaces, read/write sets and snapshot.",
+        "Stage A0→A1 and B0→B1; obtain participant prepare QCs.",
+        "Expose a 2-of-2 prepared latch.",
+        "Move payment and delivery under one atomic lock.",
+        "Commit both legs with a receipt or roll both back."
+      ],
+      "diagram": {
+        "caption": "Two spaces prepare independently and pass a 2-of-2 Nexus latch before atomic commit or rollback.",
+        "nodes": [
+          "Data space A",
+          "Prepare QC A",
+          "Nexus latch 2/2",
+          "Prepare QC B",
+          "Data space B",
+          "Commit A+B",
+          "Rollback A+B"
+        ],
+        "edges": [
+          [
+            "Data space A",
+            "Prepare QC A"
+          ],
+          [
+            "Prepare QC A",
+            "Nexus latch 2/2"
+          ],
+          [
+            "Data space B",
+            "Prepare QC B"
+          ],
+          [
+            "Prepare QC B",
+            "Nexus latch 2/2"
+          ],
+          [
+            "Nexus latch 2/2",
+            "Commit A+B"
+          ],
+          [
+            "Nexus latch 2/2",
+            "Rollback A+B"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "settlement-router",
+      "title": "Deterministic settlement router",
+      "section": "Interoperability",
+      "explanation": [
+        "Exact quantity conversion, oracle input, margins, haircuts and lane-buffer policy produce a replayable settlement result.",
+        "Lane commitments, receipts and telemetry support operator and auditor reconciliation."
+      ],
+      "sequence": [
+        "Validate amount, oracle, margin and liquidity policy.",
+        "Calculate canonical XOR obligation and applied haircut.",
+        "Check lane buffer state.",
+        "Seal lane commitment and emit reconciliation receipt."
+      ],
+      "diagram": {
+        "caption": "One obligation passes canonical input, conversion, haircut, buffer policy and lane commitment.",
+        "nodes": [
+          "Canonical input",
+          "Exact XOR due",
+          "Haircut",
+          "Buffer policy",
+          "Lane commitment",
+          "Norito receipt"
+        ],
+        "edges": [
+          [
+            "Canonical input",
+            "Exact XOR due"
+          ],
+          [
+            "Exact XOR due",
+            "Haircut"
+          ],
+          [
+            "Haircut",
+            "Buffer policy"
+          ],
+          [
+            "Buffer policy",
+            "Lane commitment"
+          ],
+          [
+            "Lane commitment",
+            "Norito receipt"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "iroha-3-core",
+      "title": "Hyperledger Iroha 3 Core",
+      "section": "Execution",
+      "explanation": [
+        "Torii admits traffic, Kotodama compiles high-level programs and IVM runs bounded deterministic logic.",
+        "Lane routing provides capacity while Sumeragi finality and Kura preserve a single canonical history."
+      ],
+      "sequence": [
+        "Torii admits a signed request.",
+        "Kotodama compiles it for IVM execution.",
+        "The runtime routes it through an assigned lane.",
+        "Sumeragi and Kura seal canonical commit."
+      ],
+      "diagram": {
+        "caption": "Admission, compilation, deterministic execution, routing and canonical commit run as one core.",
+        "nodes": [
+          "Torii",
+          "Kotodama",
+          "IVM",
+          "Lane scheduler",
+          "Sumeragi + Kura"
+        ],
+        "edges": [
+          [
+            "Torii",
+            "Kotodama"
+          ],
+          [
+            "Kotodama",
+            "IVM"
+          ],
+          [
+            "IVM",
+            "Lane scheduler"
+          ],
+          [
+            "Lane scheduler",
+            "Sumeragi + Kura"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "lanes-merge-ledger",
+      "title": "Lanes + Merge Ledger",
+      "section": "Execution",
+      "explanation": [
+        "Independent workloads execute in parallel rather than one queue.",
+        "Certified lane commitments converge into one merge-ledger history rather than separate chains."
+      ],
+      "sequence": [
+        "Route independent workloads into parallel lanes.",
+        "Produce certified commitment per lane.",
+        "Order commitments into one merge-ledger block."
+      ],
+      "diagram": {
+        "caption": "Parallel lanes converge into a shared history.",
+        "nodes": [
+          "Lane A",
+          "Lane B",
+          "Lane C",
+          "Certified commits",
+          "Merge ledger"
+        ],
+        "edges": [
+          [
+            "Lane A",
+            "Certified commits"
+          ],
+          [
+            "Lane B",
+            "Certified commits"
+          ],
+          [
+            "Lane C",
+            "Certified commits"
+          ],
+          [
+            "Certified commits",
+            "Merge ledger"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "runtime-lane-lifecycle",
+      "title": "Runtime lane lifecycle",
+      "section": "Execution",
+      "explanation": [
+        "Authorised signed lifecycle changes commit to exact lane catalogues and incarnations.",
+        "Stale catalogues, invalid plans and unsafe retirement are rejected; routing, storage and telemetry reconcile after commit."
+      ],
+      "sequence": [
+        "Review catalogue and sign lifecycle plan.",
+        "Validate authority, commitment, incarnation and safety gates.",
+        "Commit topology update and refresh routing.",
+        "Bring lane online or retire only after outstanding work clears."
+      ],
+      "diagram": {
+        "caption": "A signed plan validates, adds, routes, drains and retires capacity under consensus.",
+        "nodes": [
+          "Signed plan",
+          "Validate",
+          "Block commit",
+          "Add lane",
+          "Route + observe",
+          "Drain",
+          "Retire"
+        ],
+        "edges": [
+          [
+            "Signed plan",
+            "Validate"
+          ],
+          [
+            "Validate",
+            "Block commit"
+          ],
+          [
+            "Block commit",
+            "Add lane"
+          ],
+          [
+            "Add lane",
+            "Route + observe"
+          ],
+          [
+            "Route + observe",
+            "Drain"
+          ],
+          [
+            "Drain",
+            "Retire"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sumeragi-consensus",
+      "title": "Sumeragi Consensus",
+      "section": "Finality",
+      "explanation": [
+        "Prepare and Commit quorum certificates bind an exact subject, frozen validator roster, height and deterministic transition.",
+        "Bodies, vote intent, locks and decisions cross durable storage boundaries before the protocol advances."
+      ],
+      "sequence": [
+        "Leader broadcasts signed proposal and manifest.",
+        "Validators reconstruct, validate and durably store exact body.",
+        "Form Prepare QC from thresholds.",
+        "Persist lock and release Commit votes.",
+        "Persist Commit QC decision, apply body and open next height."
+      ],
+      "diagram": {
+        "caption": "Deterministic BFT finality advances through proposal, durable validation, prepare QC, lock and commit QC.",
+        "nodes": [
+          "Proposal",
+          "Exact body",
+          "Prepare QC",
+          "Lock",
+          "Commit QC",
+          "Final state"
+        ],
+        "edges": [
+          [
+            "Proposal",
+            "Exact body"
+          ],
+          [
+            "Exact body",
+            "Prepare QC"
+          ],
+          [
+            "Prepare QC",
+            "Lock"
+          ],
+          [
+            "Lock",
+            "Commit QC"
+          ],
+          [
+            "Commit QC",
+            "Final state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "verifiable-finality-proofs",
+      "title": "Verifiable finality proofs",
+      "section": "Finality",
+      "explanation": [
+        "A portable proof includes canonical header, certified subject, execution roots, Commit QC, frozen roster and proofs of possession.",
+        "A verifier binds the proof to independently trusted context and checks structure, signer membership, dual quorum and aggregate BLS signature."
+      ],
+      "sequence": [
+        "Assemble header, subject, roots, QC, roster and PoPs.",
+        "Seal Norito proof envelope.",
+        "Bind to trusted chain/context anchor.",
+        "Verify bindings, quorums, signer order, PoPs and aggregate signature."
+      ],
+      "diagram": {
+        "caption": "Exact finality evidence is sealed then checked against an external trusted anchor.",
+        "nodes": [
+          "Header",
+          "Subject + roots",
+          "Commit QC",
+          "Frozen roster + PoPs",
+          "Proof envelope",
+          "Trusted anchor",
+          "Accepted finality"
+        ],
+        "edges": [
+          [
+            "Header",
+            "Proof envelope"
+          ],
+          [
+            "Subject + roots",
+            "Proof envelope"
+          ],
+          [
+            "Commit QC",
+            "Proof envelope"
+          ],
+          [
+            "Frozen roster + PoPs",
+            "Proof envelope"
+          ],
+          [
+            "Proof envelope",
+            "Trusted anchor"
+          ],
+          [
+            "Trusted anchor",
+            "Accepted finality"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "kotodama-ivm",
+      "title": "Kotodama Programs",
+      "section": "Programmability",
+      "explanation": [
+        "Readable Kotodama source compiles to bounded IVM bytecode.",
+        "Every validator executes the same bounded runtime and derives the same state transition."
+      ],
+      "sequence": [
+        "Write readable Kotodama source.",
+        "Compile to IVM bytecode.",
+        "Consume bounded cycle budget.",
+        "Derive identical state transition on every validator."
+      ],
+      "diagram": {
+        "caption": "Source compiles into bounded bytecode for deterministic peer execution.",
+        "nodes": [
+          "Kotodama source",
+          "Compiler",
+          "IVM bytecode",
+          "Bounded execution",
+          "Same state"
+        ],
+        "edges": [
+          [
+            "Kotodama source",
+            "Compiler"
+          ],
+          [
+            "Compiler",
+            "IVM bytecode"
+          ],
+          [
+            "IVM bytecode",
+            "Bounded execution"
+          ],
+          [
+            "Bounded execution",
+            "Same state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "iroha-special-instructions",
+      "title": "Iroha Special Instructions",
+      "section": "Programmability",
+      "explanation": [
+        "Native typed operations cover definitions, mint, transfer, permissions and burn under explicit authority.",
+        "An ordered batch stages dependent changes and commits all or discards all on failure."
+      ],
+      "sequence": [
+        "Register asset definition with supply zero.",
+        "Mint after authority and policy checks.",
+        "Transfer without changing supply.",
+        "Grant permission.",
+        "Burn and commit final state."
+      ],
+      "diagram": {
+        "caption": "An ordered ISI batch stages native state transitions then commits one result.",
+        "nodes": [
+          "Register",
+          "Mint",
+          "Transfer",
+          "Grant",
+          "Burn",
+          "Committed state"
+        ],
+        "edges": [
+          [
+            "Register",
+            "Mint"
+          ],
+          [
+            "Mint",
+            "Transfer"
+          ],
+          [
+            "Transfer",
+            "Grant"
+          ],
+          [
+            "Grant",
+            "Burn"
+          ],
+          [
+            "Burn",
+            "Committed state"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "capability-manifests",
+      "title": "Capability manifests",
+      "section": "Programmability",
+      "explanation": [
+        "A manifest scopes a universal account’s authority by data space, program, method, asset and optional AMX role.",
+        "Activation/expiry, amount limits, allowance windows and deny-wins evaluation make authority inspectable and bounded."
+      ],
+      "sequence": [
+        "Resolve subject to universal account and active manifest.",
+        "Check requested scope and epoch/amount limits.",
+        "Scan matching deny rules.",
+        "Return allowed grant metadata or structured denial."
+      ],
+      "diagram": {
+        "caption": "A request resolves context, matches an active manifest, checks denies and returns a verdict.",
+        "nodes": [
+          "Request context",
+          "UAID binding",
+          "Active manifest",
+          "Deny scan",
+          "Allowed grant or denial"
+        ],
+        "edges": [
+          [
+            "Request context",
+            "UAID binding"
+          ],
+          [
+            "UAID binding",
+            "Active manifest"
+          ],
+          [
+            "Active manifest",
+            "Deny scan"
+          ],
+          [
+            "Deny scan",
+            "Allowed grant or denial"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "on-chain-automation",
+      "title": "On-Chain Automation",
+      "section": "Programmability",
+      "explanation": [
+        "A trigger stores one executable, one event filter, declared authority and repeat policy.",
+        "Permissions, repeat limits, fuel/cycles, gas and execution depth bound the resulting action and its recorded outcome."
+      ],
+      "sequence": [
+        "Register one supported filter configuration.",
+        "Matching event loads executable, authority and remaining repeats.",
+        "Resolve filter, enabled state, authority and runtime bounds.",
+        "Stage state change and consume repeat on success.",
+        "Record TriggerCompleted outcome."
+      ],
+      "diagram": {
+        "caption": "One exact event filter activates bounded authorised work and a completion record.",
+        "nodes": [
+          "Trigger active",
+          "Event filters",
+          "Match",
+          "Authority + bounds",
+          "Action",
+          "Completion"
+        ],
+        "edges": [
+          [
+            "Trigger active",
+            "Event filters"
+          ],
+          [
+            "Event filters",
+            "Match"
+          ],
+          [
+            "Match",
+            "Authority + bounds"
+          ],
+          [
+            "Authority + bounds",
+            "Action"
+          ],
+          [
+            "Action",
+            "Completion"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "norito-codec",
+      "title": "Norito Codec",
+      "section": "Programmability",
+      "explanation": [
+        "Typed values use canonical payloads framed by an NRT0 header with version, schema hash, compression, declared length, CRC64-XZ and layout flags.",
+        "Readers validate boundaries before reconstruction; uncompressed canonical layout produces the same bytes for the same value."
+      ],
+      "sequence": [
+        "Serialize ordered fields.",
+        "Seal 40-byte NRT0 header.",
+        "Stream header and payload.",
+        "Validate magic, version, layout, schema, length and CRC.",
+        "Decode the same typed value."
+      ],
+      "diagram": {
+        "caption": "A typed value becomes a checked frame and reconstructs exactly.",
+        "nodes": [
+          "Typed value",
+          "Canonical fields",
+          "NRT0 frame",
+          "Chunked reader",
+          "Validation",
+          "Decoded value"
+        ],
+        "edges": [
+          [
+            "Typed value",
+            "Canonical fields"
+          ],
+          [
+            "Canonical fields",
+            "NRT0 frame"
+          ],
+          [
+            "NRT0 frame",
+            "Chunked reader"
+          ],
+          [
+            "Chunked reader",
+            "Validation"
+          ],
+          [
+            "Validation",
+            "Decoded value"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "soranet-sorafs",
+      "title": "SoraNet + SoraFS",
+      "section": "Ecosystem extension",
+      "explanation": [
+        "A blinded request selects entry, middle and exit relay roles under strict transport policy.",
+        "SoraFS resolves a manifest, retrieves chunks from eligible providers and validates chunks and completed payload before returning evidence."
+      ],
+      "sequence": [
+        "Turn content address into blinded key.",
+        "Select SoraNet path by role/version/policy.",
+        "Cross entry, middle and exit relays.",
+        "Resolve SoraFS manifest and expected digests.",
+        "Retrieve ordered provider chunks and verify reconstruction.",
+        "Return verified object and fetch evidence."
+      ],
+      "diagram": {
+        "caption": "A blinded relay request resolves manifest-bound chunks then returns verified content.",
+        "nodes": [
+          "Content address",
+          "Entry",
+          "Middle",
+          "Exit",
+          "Manifest",
+          "Providers",
+          "Verified object"
+        ],
+        "edges": [
+          [
+            "Content address",
+            "Entry"
+          ],
+          [
+            "Entry",
+            "Middle"
+          ],
+          [
+            "Middle",
+            "Exit"
+          ],
+          [
+            "Exit",
+            "Manifest"
+          ],
+          [
+            "Manifest",
+            "Providers"
+          ],
+          [
+            "Providers",
+            "Verified object"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "agent-economy",
+      "title": "A shared economy for AI agents",
+      "section": "Agent economy",
+      "status": "future-use-case",
+      "explanation": [
+        "The page presents a future use case using accounts, assets, permissions, automation, atomic delivery and receipts under human-defined authority.",
+        "It explicitly says Iroha does not run AI models, determine AI control, or grant unrestricted autonomy."
+      ],
+      "sequence": [
+        "Buyer requests a machine-readable service.",
+        "Check authority, balance and spending limits.",
+        "Provider registers or mints service asset.",
+        "Enter payment and delivery in atomic transaction.",
+        "Commit both sides or roll both back.",
+        "Emit canonical audit receipt."
+      ],
+      "diagram": {
+        "caption": "Authorised accounts exchange payment and digital rights atomically under human policy.",
+        "nodes": [
+          "Buyer account",
+          "Human-defined policy",
+          "Provider account",
+          "Service asset",
+          "Atomic exchange",
+          "Canonical receipt"
+        ],
+        "edges": [
+          [
+            "Buyer account",
+            "Human-defined policy"
+          ],
+          [
+            "Human-defined policy",
+            "Atomic exchange"
+          ],
+          [
+            "Provider account",
+            "Service asset"
+          ],
+          [
+            "Service asset",
+            "Atomic exchange"
+          ],
+          [
+            "Atomic exchange",
+            "Canonical receipt"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "fastpq-proof-pipeline",
+      "title": "FASTPQ Proof Pipeline",
+      "section": "Privacy",
+      "explanation": [
+        "Private execution traces remain within their data space while commitments become public proof inputs.",
+        "A public verifier reaches admission without receiving the complete trace; privacy does not remove correctness checks."
+      ],
+      "sequence": [
+        "Keep private execution trace within its data space.",
+        "Create public commitment and proof inputs.",
+        "Verify evidence and decide admission without exposing trace."
+      ],
+      "diagram": {
+        "caption": "Private trace produces a public commitment and a verified admission decision.",
+        "nodes": [
+          "Private trace",
+          "Commitment",
+          "Proof inputs",
+          "Verifier",
+          "Admission decision"
+        ],
+        "edges": [
+          [
+            "Private trace",
+            "Commitment"
+          ],
+          [
+            "Commitment",
+            "Proof inputs"
+          ],
+          [
+            "Proof inputs",
+            "Verifier"
+          ],
+          [
+            "Verifier",
+            "Admission decision"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "privacy-proof-admission",
+      "title": "Privacy-proof admission",
+      "section": "Privacy",
+      "explanation": [
+        "Lane manifests register approved commitments such as Merkle roots or proof descriptors.",
+        "Transactions attach a witness; admission checks it against the routed lane registry and fails closed when required evidence is absent, malformed or unregistered."
+      ],
+      "sequence": [
+        "Governance registers commitment identifiers and verification parameters.",
+        "Transaction attaches witness for routed lane.",
+        "Admission verifies attachment and applies lane-compliance rule.",
+        "Accept valid evidence or reject before queueing."
+      ],
+      "diagram": {
+        "caption": "A private-data-space witness is checked against a lane proof policy before admission.",
+        "nodes": [
+          "Private data space",
+          "Witness",
+          "Lane registry",
+          "Proof policy",
+          "Admitted or rejected"
+        ],
+        "edges": [
+          [
+            "Private data space",
+            "Witness"
+          ],
+          [
+            "Witness",
+            "Lane registry"
+          ],
+          [
+            "Lane registry",
+            "Proof policy"
+          ],
+          [
+            "Proof policy",
+            "Admitted or rejected"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "data-availability",
+      "title": "Data Availability & Proofs",
+      "section": "Privacy",
+      "explanation": [
+        "Committed history is made recoverable through sharding, sampling and reconstruction.",
+        "Availability evidence keeps proofs connected to data that can be retrieved rather than only an opaque commitment."
+      ],
+      "sequence": [
+        "Commit data into availability structure.",
+        "Shard data for distribution.",
+        "Sample and verify availability evidence.",
+        "Recover/reconstruct committed history when required."
+      ],
+      "diagram": {
+        "caption": "Committed data is sharded, sampled and reconstructed to keep proofs tied to retrievable history.",
+        "nodes": [
+          "Committed data",
+          "Shards",
+          "Distribution",
+          "Sampling",
+          "Recovery",
+          "Available history"
+        ],
+        "edges": [
+          [
+            "Committed data",
+            "Shards"
+          ],
+          [
+            "Shards",
+            "Distribution"
+          ],
+          [
+            "Distribution",
+            "Sampling"
+          ],
+          [
+            "Sampling",
+            "Recovery"
+          ],
+          [
+            "Recovery",
+            "Available history"
+          ]
+        ]
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "sora-nexus-whitepaper",
+      "kind": "primary-document",
+      "status": "draft-for-review",
+      "era": "nexus-iroha-3",
+      "title": "SORA Nexus whitepaper",
+      "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+      "content_url": "/api/v1/whitepaper.json",
+      "presentation": "json-only",
+      "claim_scope": "Canonical source document. Its presence here is an index record, not a product, deployment, or availability claim. The JSON companion is a section-by-section representation; the PDF remains the canonical wording."
+    },
+    {
+      "id": "builders-programme",
+      "kind": "ecosystem-service",
+      "status": "published",
+      "title": "SORA Builders Programme",
+      "source_url": "https://sora.org/builders",
+      "html_summary": "A programme page describing mentorship, grants, incubation and porting support for teams building or migrating products. Participation, timelines, eligibility and funding remain controlled by the source programme.",
+      "sections": [
+        {
+          "title": "Programme purpose",
+          "content": "Practical product development with technical guidance, feedback loops and ecosystem collaboration."
+        },
+        {
+          "title": "Use-case catalogue",
+          "content": "The page lists peer-to-peer exchange, stablecoin borrowing, tokenisation, marketplaces, payroll, CBDC/debt instruments, land registry, sustainability and supply-chain tracing."
+        },
+        {
+          "title": "Application path",
+          "content": "Application, review, preparation and product-launch stages are described; the live page says timing may vary by applicant and scope."
+        },
+        {
+          "title": "Support",
+          "content": "Project incubation, porting assistance and financial backing are described as programme support areas."
+        }
+      ],
+      "claim_scope": "Informational only. It is not an application form, grant commitment or programme eligibility decision."
+    },
+    {
+      "id": "cbdc",
+      "kind": "ecosystem-service",
+      "status": "published",
+      "title": "SORA for CBDC",
+      "source_url": "https://sora.org/cbdc",
+      "html_summary": "A source page on tokenised assets and policy-governed digital-currency workflows. It describes evaluation and proof-of-concept context, not a current central-bank deployment offer.",
+      "sections": [
+        {
+          "title": "Infrastructure",
+          "content": "The page describes configurable governance, throughput and integration considerations for tokenised-asset and CBDC-related workflows."
+        },
+        {
+          "title": "XORless swaps",
+          "content": "It describes an onboarding mechanism intended to bridge assets without first acquiring XOR."
+        },
+        {
+          "title": "Jurisdiction and remittances",
+          "content": "Policy controls and cross-jurisdiction remittance workflows are presented as subject to institutional, regulatory and operational design."
+        },
+        {
+          "title": "Bokolo Cash",
+          "content": "The page describes a proof-of-concept involving wallet transfer and QR-payment experiments over Substrate infrastructure, with future interoperability dependent on further agreements."
+        }
+      ],
+      "claim_scope": "Not a regulatory approval, institutional integration, or availability statement."
+    },
+    {
+      "id": "sora-wallet",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "SORA Wallet",
+      "source_url": "https://sora.org/wallet",
+      "html_summary": "A self-custodial mobile-wallet source page describing accounts, asset custody, transfers, swaps and liquidity integrations. This reading surface never initiates any of those actions.",
+      "sections": [
+        {
+          "title": "Accounts",
+          "content": "Create or import SORA network accounts."
+        },
+        {
+          "title": "Asset management",
+          "content": "Hold, send and receive supported SORA ecosystem tokens with local-device security controls."
+        },
+        {
+          "title": "Swaps and liquidity",
+          "content": "The page describes Polkaswap routing, supported liquidity pools and connected farming products where available."
+        },
+        {
+          "title": "Support and programmes",
+          "content": "The source also describes community support and referral rewards subject to current programme terms."
+        }
+      ],
+      "claim_scope": "Orientation only; not a wallet connection, transaction request, asset recommendation or programme guarantee."
+    },
+    {
+      "id": "polkaswap",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "Polkaswap",
+      "source_url": "https://sora.org/polkaswap",
+      "html_summary": "A source page for a cross-chain decentralised-exchange experience. It is indexed for context only; this corpus does not quote prices, provide routing, or execute trades.",
+      "sections": [
+        {
+          "title": "Exchange model",
+          "content": "The source describes cross-chain swaps and routing across liquidity sources."
+        },
+        {
+          "title": "Liquidity",
+          "content": "It describes liquidity provision, pools and connected ecosystem routes."
+        },
+        {
+          "title": "Trading context",
+          "content": "The live page presents swapping and order-book-related features as external-service information."
+        }
+      ],
+      "claim_scope": "No price, trading, liquidity, bridge, route or execution claim is made by this corpus."
+    },
+    {
+      "id": "sora-ecosystem-tokens",
+      "kind": "token-catalogue",
+      "status": "published",
+      "title": "SORA ecosystem tokens",
+      "source_url": "https://sora.org/soratokens",
+      "html_summary": "A source catalogue for XOR, VAL, PSWAP, XST and other named ecosystem tokens. It is contextual reference material, never market data or an investment view.",
+      "sections": [
+        {
+          "title": "XOR",
+          "content": "The source presents XOR in the SORA ecosystem and its economic/governance context."
+        },
+        {
+          "title": "VAL and PSWAP",
+          "content": "The source describes validator and exchange-related token roles."
+        },
+        {
+          "title": "Additional catalogue entries",
+          "content": "The page also identifies XST and other ecosystem-token concepts."
+        }
+      ],
+      "claim_scope": "Not a price feed, token listing guarantee, investment recommendation or offer."
+    },
+    {
+      "id": "sora-validator-guide",
+      "kind": "action-capable-external-service",
+      "status": "published",
+      "title": "SORA Validator Guide",
+      "source_url": "https://sora.org/validator",
+      "html_summary": "A source page for validator operators and nominators. It is indexed for operational context only; this corpus neither advises nor performs staking, nomination, registration, or node operation.",
+      "sections": [
+        {
+          "title": "Participation",
+          "content": "The page describes validator and nominator participation in the SORA network."
+        },
+        {
+          "title": "Selection and operations",
+          "content": "It describes stake-weighted selection, infrastructure and operational requirements."
+        },
+        {
+          "title": "Risk boundary",
+          "content": "Network participation and token-related actions remain external decisions with operational and financial consequences."
+        }
+      ],
+      "claim_scope": "Not operational advice, a staking instruction, a nomination request or a reward claim."
+    },
+    {
+      "id": "nexus-live-framing",
+      "kind": "primary-web-framing",
+      "status": "published",
+      "era": "nexus-iroha-3",
+      "title": "SORA Nexus live-site framing",
+      "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+      "html_summary": "The live site frames the current material through sovereign money, permissioned software and a common protocol for the CBDC era and an emerging agent economy.",
+      "sections": [
+        {
+          "title": "Published framing",
+          "content": "Sovereign money. Permissioned software. One protocol."
+        },
+        {
+          "title": "Entry statement",
+          "content": "The CBDC era—and the emerging agent economy—need a common protocol. SORA Nexus is building it on Hyperledger Iroha 3."
+        }
+      ],
+      "claim_scope": "Source framing only; it does not add a performance, availability, commercial, or deployment claim."
+    },
+    {
+      "id": "soramitsu-bokolo-cash",
+      "kind": "linked-project-source",
+      "status": "published",
+      "era": "nexus-iroha-3",
+      "title": "Bokolo Cash",
+      "source_url": "https://soramitsu.co.jp/bokolo-cash",
+      "html_summary": "Soramitsu, a SORA technology contributor, works with central banks on infrastructure for tokenized assets and CBDC-related services.",
+      "sections": [
+        {
+          "title": "Contributor context",
+          "content": "The source presents Bokolo Cash as a Soramitsu project; this record does not represent a policy, deployment, or performance claim by the For Agents corpus."
+        }
+      ],
+      "claim_scope": "Contributor context only; consult the linked project source for current project information."
+    },
+    {
+      "id": "makoto-cbdc-architecture-article",
+      "kind": "linked-editorial-source",
+      "status": "observed",
+      "title": "CBDCs Are Not the Beast. Bad Architecture Is.",
+      "subtitle": "The life-giving ledger, SORA Nexus, and the constitutional design of digital money",
+      "author": "Makoto Takemiya",
+      "author_handle": "@M4K070",
+      "author_role": "SORA Contributor",
+      "published_at": "2026-06-22",
+      "source_url": "https://x.com/M4K070/status/2068994860665991647",
+      "html_summary": "A SORA Contributor editorial on the constitutional design of digital money. It argues that the relevant question is how identity, visibility, rule-making, enforcement and appeal powers are separated and bounded.",
+      "sections": [
+        {
+          "title": "Architecture rather than label",
+          "content": "The essay argues that a CBDC is monetary infrastructure, and that risks arise from architecture, governance and limits on power rather than the acronym alone."
+        },
+        {
+          "title": "Separated powers",
+          "content": "It distinguishes identity from transaction validity, issuance from retail service, compliance from omniscience, settlement from surveillance, and governance from arbitrary administration."
+        },
+        {
+          "title": "Operational example",
+          "content": "It discusses Bakong’s two-tier structure as a model in which central infrastructure and customer-facing institutions retain distinct functions."
+        },
+        {
+          "title": "Nexus context",
+          "content": "It connects shared settlement, data spaces, lanes, deterministic execution, canonical encoding, proofs and institutional messaging to bounded visibility and accountable intervention."
+        },
+        {
+          "title": "Constitutional choice",
+          "content": "It contrasts refusal, managerial convenience and constitutional digital money, with explicit processes, constrained authority and auditable interventions."
+        }
+      ],
+      "claim_scope": "Attributed editorial source. The For Agents corpus indexes its architecture themes and preserves its source link; it does not restate it as protocol specification or policy."
+    },
+    {
+      "id": "sora2-legacy-ecosystem",
+      "kind": "legacy-source-document",
+      "status": "legacy",
+      "era": "legacy-sora-v2",
+      "title": "SORA Legacy Ecosystem Overview",
+      "source_url": "https://sora.org/sora2",
+      "html_summary": "Legacy SORA ecosystem material. It describes the prior SORA ecosystem experience; for the current Hyperledger Iroha 3 engineering track, see SORA Nexus.",
+      "sections": [
+        {
+          "title": "Legacy framing",
+          "content": "The source explicitly identifies itself as a legacy SORA ecosystem overview and distinguishes it from the current SORA Nexus/Iroha 3 track."
+        },
+        {
+          "title": "Economic narrative",
+          "content": "It describes XOR-oriented bonding-curve, governance, funding and policy narratives."
+        },
+        {
+          "title": "Legacy ecosystem",
+          "content": "It references legacy DeFi, CBDC, synthetic-asset, wallet, governance and community routes."
+        }
+      ],
+      "claim_scope": "Historical context only. Do not combine it with Nexus claims or imply interoperability, continuity, deployment, availability, or token-performance outcomes."
+    },
+    {
+      "id": "case-for-xor",
+      "kind": "historical-editorial-document",
+      "status": "observed",
+      "era": "legacy-sora-v2",
+      "title": "The Case for XOR",
+      "author": "Makoto Takemiya",
+      "source_url": "https://sora.org/assets/how-sora-works/the-case-for-xor.pdf",
+      "content_url": "/api/v1/case-for-xor.json",
+      "presentation": "json-only",
+      "claim_scope": "Attributed historical economic argument. It is not current SORA Nexus policy, financial advice, a legal-tender proposal, an implementation plan, or a claim about token value, performance, or availability."
+    },
+    {
+      "id": "privacy-policy",
+      "kind": "legal-source-document",
+      "status": "published",
+      "era": "legacy-service-policy",
+      "title": "Privacy Policy",
+      "effective_date": "2021-03-17",
+      "source_url": "https://sora.org/privacy",
+      "presentation": "json-only",
+      "sections": [
+        {
+          "title": "Controller and service context",
+          "content": "The source identifies Soramitsu entities and describes the SORA app/service context."
+        },
+        {
+          "title": "Collection and use",
+          "content": "It enumerates personal-information categories and purposes including service operation, identity verification, transactions, KYC availability, fraud prevention and activity tracking."
+        },
+        {
+          "title": "Retention, logs and cookies",
+          "content": "It describes retention, diagnostic log data, cookie treatment and third-party service-provider context."
+        },
+        {
+          "title": "Identification and security",
+          "content": "It describes request signatures, local private-key handling, security limitations and legal disclosure conditions."
+        },
+        {
+          "title": "Rights and contacts",
+          "content": "It includes links, children’s privacy, change handling, controller/DPO details and supervisory-authority contact information."
+        }
+      ],
+      "claim_scope": "Legal source record only. It is not Nexus policy, legal advice, a current compliance attestation or a substitute for the linked policy."
+    },
+    {
+      "id": "terms-eula",
+      "kind": "legal-source-document",
+      "status": "published",
+      "era": "legacy-service-policy",
+      "title": "End User License Agreement",
+      "source_url": "https://sora.org/terms",
+      "presentation": "json-only",
+      "sections": [
+        {
+          "title": "Agreement and acceptance",
+          "content": "The source defines the agreement between Soramitsu and the person using the application/platform, including acceptance and authority conditions."
+        },
+        {
+          "title": "Service terms",
+          "content": "It sets licence, use, eligibility and service conditions for the referenced application and platform."
+        },
+        {
+          "title": "Related policies",
+          "content": "It links privacy treatment and incorporates the source’s own definitions and conditions."
+        }
+      ],
+      "claim_scope": "Legal source record only. It is not a Nexus licence, a user agreement acceptance flow, or legal advice."
+    }
+  ],
+  "whitepaper": {
+    "version": "v1",
+    "status": "published",
+    "corpus_version": "v1.4.0",
+    "updated": "2026-09-10",
+    "id": "sora-nexus-whitepaper",
+    "kind": "primary-document-representation",
+    "title": "Hyperledger Iroha 3: SORA Nexus",
+    "source_url": "https://sora.org/sora_nexus_whitepaper.pdf",
+    "source_status": "Draft for Review",
+    "source_date": "2025-11-26",
+    "presentation": "json-only",
+    "content_mode": "section-by-section representation",
+    "notice": "This JSON represents the paper by page-anchored sections and detailed summaries. It does not replace, amend, or reproduce the canonical PDF wording.",
+    "claim_scope": "Document representation only; not an implementation specification, deployment claim, operational interface, legal commitment, or performance guarantee.",
+    "sections": [
+      {
+        "id": "abstract",
+        "title": "Abstract",
+        "page_start": 4,
+        "summary": "Introduces SORA Nexus as a single logical ledger built on Hyperledger Iroha 3. The stated design combines cooperating validators and data spaces to support privacy, deterministic execution, and interoperability across regulated and open domains."
+      },
+      {
+        "id": "executive-summary",
+        "title": "Executive Summary",
+        "page_start": 4,
+        "summary": "Sets out the paper’s first-principles case for a unified ledger architecture rather than separate public and private chains. It frames data sovereignty, deterministic execution, cryptographic proofs, availability, and institutional interoperability as one system design."
+      },
+      {
+        "id": "nexus-highlights",
+        "title": "SORA Nexus Highlights",
+        "page_start": 5,
+        "summary": "Summarises the stated architecture: data spaces, lanes and a merge ledger, the Iroha Virtual Machine and Kotodama, Sumeragi finality, FASTPQ proofs, data availability, ISO 20022 alignment, and Norito serialization."
+      },
+      {
+        "id": "end-of-history",
+        "title": "SORA Nexus: The End of History",
+        "page_start": 6,
+        "summary": "Presents the paper’s unification thesis: financial and digital systems should be able to coordinate on one logical ledger without forcing every participant into the same visibility, policy, or validator regime."
+      },
+      {
+        "id": "context-goals",
+        "title": "Context and Goals",
+        "page_start": 7,
+        "summary": "Defines the architectural motivation: public chains can expose data and make performance difficult to predict, while isolated systems lose composability. The intended goal is common settlement with bounded policy and privacy domains."
+      },
+      {
+        "id": "motivation",
+        "title": "Motivation",
+        "page_start": 7,
+        "summary": "Explains why institutional systems, open applications, and sovereign monetary environments require shared coordination without collapsing their respective governance and information boundaries."
+      },
+      {
+        "id": "design-goals",
+        "title": "Design Goals",
+        "page_start": 7,
+        "summary": "Organises the desired properties around deterministic operation, privacy, interoperability, scalable capacity, auditable governance, and common history across differentiated data spaces."
+      },
+      {
+        "id": "ivm-core",
+        "title": "IVM at the Core",
+        "page_start": 8,
+        "summary": "Places the Iroha Virtual Machine at the execution core. The paper describes a controlled deterministic runtime intended to make high-level programs and native instructions resolve consistently across peers."
+      },
+      {
+        "id": "architecture-overview",
+        "title": "Architecture Overview",
+        "page_start": 9,
+        "summary": "Introduces the major architectural components and their roles: data spaces for bounded domains, lanes for parallel work, a merge ledger for canonical ordering, and shared execution and finality machinery."
+      },
+      {
+        "id": "components-roles",
+        "title": "Components and Roles",
+        "page_start": 9,
+        "summary": "Describes how admission, execution, routing, storage, consensus, proof systems, and governance components cooperate while retaining distinct responsibilities."
+      },
+      {
+        "id": "data-spaces",
+        "title": "Data Spaces",
+        "page_start": 9,
+        "summary": "Explains policy-scoped spaces as domains that retain local visibility, admission, privacy, governance, and validator boundaries while authorized evidence and value can coordinate through shared settlement."
+      },
+      {
+        "id": "lanes-merge",
+        "title": "Lanes and Merge Ledger",
+        "page_start": 9,
+        "summary": "Describes parallel execution lanes whose certified commitments converge into a shared canonical history, aiming to add capacity without fragmenting assets, liquidity, or institutional context."
+      },
+      {
+        "id": "data-model-governance",
+        "title": "Data Space Model and Governance",
+        "page_start": 10,
+        "summary": "Covers public and restricted domains and the governance surfaces that define their policies. The stated model treats policy and privacy boundaries as part of the ledger topology rather than after-the-fact application conventions."
+      },
+      {
+        "id": "consensus-scheduling-finality",
+        "title": "Consensus, Scheduling, and Finality",
+        "page_start": 10,
+        "summary": "Groups the mechanisms for admission, fair scheduling, lane topology changes, and Byzantine finality. The focus is on making the route from request to durable canonical state explicit and reviewable."
+      },
+      {
+        "id": "data-availability-storage",
+        "title": "Data Availability and Storage",
+        "page_start": 15,
+        "summary": "Describes erasure-coded storage, availability sampling, certificates, and proof systems intended to keep commitments connected to recoverable data while limiting unnecessary disclosure."
+      },
+      {
+        "id": "cryptography-serialization",
+        "title": "Cryptography and Serialization",
+        "page_start": 17,
+        "summary": "Covers canonical cryptographic primitives and serialization. Norito is presented as the encoding layer that allows nodes and external systems to validate and reconstruct typed values consistently."
+      },
+      {
+        "id": "smart-contracts-execution",
+        "title": "Smart Contracts and Execution",
+        "page_start": 18,
+        "summary": "Covers Kotodama compilation to IVM bytecode, the rationale for a custom deterministic virtual machine, and runtime interfaces such as ABI, memory, syscalls, and gas boundaries."
+      },
+      {
+        "id": "transaction-lifecycle-networking",
+        "title": "Transaction Lifecycle and Networking",
+        "page_start": 19,
+        "summary": "Describes the path by which signed requests are admitted, propagated, validated, executed, and committed, with the aim that identical inputs and authority context lead to the same network result."
+      },
+      {
+        "id": "account-model",
+        "title": "Account Model, Encoding, and Multisig",
+        "page_start": 20,
+        "summary": "Covers account structure and lifecycle, state application, automation triggers, and multi-signature or authority-related concerns in the wider execution model."
+      },
+      {
+        "id": "interoperability-connectors",
+        "title": "Interoperability and Connectors",
+        "page_start": 23,
+        "summary": "Addresses connection to institutional and external systems. The paper associates this layer with ISO 20022-aligned messaging, canonical envelopes, and explicit policy boundaries for coordinated value exchange."
+      },
+      {
+        "id": "ecosystem-components",
+        "title": "Ecosystem Components",
+        "page_start": 23,
+        "summary": "Indexes SoraFS, SoraNet, Soracles, ISO 20022 alignment, Norito streaming, Kaigi, and Taikai as components around the core ledger and execution architecture."
+      },
+      {
+        "id": "governance",
+        "title": "Governance: SORA Parliament",
+        "page_start": 28,
+        "summary": "Covers governance bodies and selection, runtime upgrades, the economic model and XOR utility, offline transactions, and developer experience. It frames changes to shared infrastructure as governed and auditable rather than ad hoc."
+      },
+      {
+        "id": "privacy-security-compliance",
+        "title": "Privacy, Security, and Compliance",
+        "page_start": 31,
+        "summary": "Covers privacy transactions, proof systems, and related compliance concerns. Its architectural focus is the verification of narrow claims without treating complete transaction visibility as the default condition."
+      },
+      {
+        "id": "operations-observability",
+        "title": "Operations and Observability",
+        "page_start": 33,
+        "summary": "Addresses operating and observing the network, including the information needed to understand state, capacity, and execution without conflating observability with unrestricted disclosure."
+      },
+      {
+        "id": "performance-targets",
+        "title": "Performance Targets and Defaults",
+        "page_start": 33,
+        "summary": "Lists performance-related targets and defaults as part of the document’s design discussion. These are document statements, not independent benchmarks or production service-level commitments in this corpus."
+      },
+      {
+        "id": "mathematical-foundations",
+        "title": "Mathematical Foundations",
+        "page_start": 33,
+        "summary": "Collects the formal and quantitative material behind start-time fair queuing, lane and data-availability budgets, erasure coding, availability confidence, proof composition, Fiat–Shamir, and XOR fee equilibrium."
+      },
+      {
+        "id": "use-cases",
+        "title": "Use Cases",
+        "page_start": 37,
+        "summary": "Places the architecture in practical contexts where sovereign policy, shared settlement, privacy boundaries, programmable execution, and interoperability may need to coexist."
+      },
+      {
+        "id": "conclusion",
+        "title": "Conclusion",
+        "page_start": 37,
+        "summary": "Returns to the paper’s central proposition: a shared logical ledger can support differentiated policy and privacy domains when execution, finality, proofs, and governance are designed as mutually bounded components."
+      }
+    ]
+  },
+  "case_for_xor": {
+    "version": "v1",
+    "status": "published",
+    "corpus_version": "v1.4.0",
+    "updated": "2026-09-10",
+    "id": "case-for-xor",
+    "kind": "historical-editorial-document-representation",
+    "title": "The Case for XOR",
+    "author": "Makoto Takemiya",
+    "publisher": "SORAMITSU Co., Ltd.",
+    "source_url": "https://sora.org/assets/how-sora-works/the-case-for-xor.pdf",
+    "presentation": "json-only",
+    "content_mode": "section-by-section representation",
+    "era": "legacy-sora-v2",
+    "notice": "This JSON represents a historical editorial document by page-anchored sections and summaries. It does not replace, amend, or reproduce the canonical PDF wording, and it is not presented as current SORA Nexus policy.",
+    "claim_scope": "Historical economic argument only; not financial advice, a token recommendation, legal advice, a legal-tender proposal, an implementation plan, or a present-tense performance or availability statement.",
+    "sections": [
+      {
+        "id": "abstract",
+        "title": "Abstract",
+        "page_start": 1,
+        "summary": "States the author’s thesis that XOR is a supranational currency whose supply and primary market are managed by a blockchain program. It argues that productive investment and open governance can connect monetary issuance to the creation of goods and services."
+      },
+      {
+        "id": "introduction",
+        "title": "Introduction",
+        "page_start": 1,
+        "summary": "Introduces money as a unit of account, store of value, and medium of exchange, then frames the paper as an argument about how a cryptocurrency might be used to support predictable economic growth. It sets up a comparison with Bitcoin’s legal-tender status in El Salvador."
+      },
+      {
+        "id": "creating-economic-growth",
+        "title": "Creating Economic Growth",
+        "page_start": 2,
+        "summary": "Presents the paper’s account of economic growth through factor inputs and productivity. It distinguishes money used for transactions contributing to GDP from money used for asset purchases, and argues that allocation and use of money affect growth, prices, and asset bubbles."
+      },
+      {
+        "id": "xor-catalyst",
+        "title": "XOR as a Catalyst for Economic Growth",
+        "page_start": 4,
+        "summary": "Sets out the paper’s claims about XOR’s bonding-curve model, elastic supply, governance, and intended role in funding productive activity. The paper discusses buy and sell functions, reserves, token voting, and TBCD in support of that argument."
+      },
+      {
+        "id": "bitcoin-comparison",
+        "title": "Comparison to Bitcoin Legal Tender Status in El Salvador",
+        "page_start": 6,
+        "summary": "Compares the paper’s model of XOR with Bitcoin’s legal-tender adoption in El Salvador, discussing remittances, access, distribution infrastructure, currency issuance, mining, and the author’s assessment of economic consequences. These are attributed historical arguments, not current analysis by this corpus."
+      },
+      {
+        "id": "implementation-steps",
+        "title": "Steps to Implement the SORA Economic System in a Country",
+        "page_start": 9,
+        "summary": "Describes the document’s proposed sequence of legislation, wallet localization, liaison and economic-analysis arrangements. This section is retained as historical source material only and is not operational guidance or a current proposal."
+      },
+      {
+        "id": "references",
+        "title": "References",
+        "page_start": 11,
+        "summary": "Lists the academic, institutional, technical, and web references cited by the author in support of the paper’s economic and technical arguments."
+      }
+    ]
+  },
   "repositories": [
-    {"id":"hyperledger-iroha-upstream","name":"Hyperledger Iroha","role":"requested-upstream-source","status":"published","url":"https://github.com/hyperledger-iroha/iroha","default_branch":"refresh-before-release","license":"refresh-before-release","claim_scope":"Canonical requested outbound repository; no claim about local forks or snapshots."},
-    {"id":"sora-org","name":"SORA source organisation","role":"ecosystem-registry-candidate","status":"proposed","url":"https://github.com/sora-xor","claim_scope":"Candidate entry. Roles, branches, licenses and active state require release-time audit."}
+    {
+      "id": "hyperledger-iroha-upstream",
+      "name": "Hyperledger Iroha",
+      "role": "requested-upstream-source",
+      "status": "published",
+      "url": "https://github.com/hyperledger-iroha/iroha",
+      "claim_scope": "Canonical requested outbound repository; no claim about local forks or snapshots."
+    },
+    {
+      "id": "sora-org",
+      "name": "SORA source organisation",
+      "role": "source-organisation",
+      "status": "published",
+      "url": "https://github.com/sora-xor",
+      "claim_scope": "Direct source-organisation entry point; verify repository-specific details at the referenced repository."
+    }
   ],
-  "links":[{"id":"sora-home","label":"SORA Nexus","url":"https://sora.org/","kind":"primary-site","status":"published"},{"id":"iroha-main","label":"Hyperledger Iroha — main repository","url":"https://github.com/hyperledger-iroha/iroha","kind":"source-repository","status":"published"},{"id":"iroha-readme","label":"Iroha README","url":"https://github.com/hyperledger-iroha/iroha#readme","kind":"repository-entry","status":"published"},{"id":"iroha-docs","label":"Iroha docs","url":"https://github.com/hyperledger-iroha/iroha/tree/main/docs","kind":"repository-entry","status":"published"},{"id":"youtube","label":"SORA YouTube","url":"https://www.youtube.com/@sora_xor","kind":"social","status":"published"},{"id":"youtube-playlists","label":"SORA YouTube playlists","url":"https://www.youtube.com/@sora_xor/playlists","kind":"social-catalog","status":"published"},{"id":"github-search","label":"Iroha source search","url":"https://github.com/hyperledger-iroha/iroha/search","kind":"repository-entry","status":"published"}],
-  "ecosystem_access":[
-    {"id":"sorametrics","label":"SoraMetrics · block explorer and analytics","url":"https://sorametrics.org/","category":"network-observability","status":"linked-external","summary":"Independent SORA analytics interface. It presents separate paths for the Substrate SORA v2 mainnet, the Iroha 3 Nexus / Minamoto mainnet, and a forthcoming marketplace; it also presents XOR migration indicators.","claim_scope":"Live analytics and counts belong to SoraMetrics and change over time. This corpus does not reproduce them or treat the service as a SORA operational API."},
-    {"id":"cbdc","label":"CBDC","url":"https://sora.org/cbdc","category":"institutional-information","status":"published","summary":"Information on SORA infrastructure for tokenized assets and policy-governed digital-currency workflows.","claim_scope":"Informational page; jurisdictional, regulatory and operational suitability must be assessed independently."},
-    {"id":"wallet","label":"SORA Wallet","url":"https://sora.org/wallet","category":"wallet","status":"linked-action-capable","summary":"Self-custodial mobile wallet for SORA ecosystem assets, sending, receiving, swaps and liquidity integrations.","claim_scope":"Linked for orientation only. This reading corpus never initiates wallet, swap or liquidity activity."},
-    {"id":"polkaswap","label":"Polkaswap","url":"https://sora.org/polkaswap","category":"Decentralized exchange (DEX)","status":"linked-action-capable","summary":"Decentralized exchange (DEX) information covering cross-chain swaps, liquidity, bridge routes and order-book trading on SORA.","claim_scope":"Linked for orientation only. The For Agents corpus provides no trading, routing or transaction tool."},
-    {"id":"sora-tokens","label":"SORA ecosystem tokens","url":"https://sora.org/soratokens","category":"token-catalogue","status":"published","summary":"Catalogue page naming XOR, VAL, PSWAP and additional ecosystem tokens.","claim_scope":"A catalogue is not a price feed, investment view, availability guarantee or recommendation."},
-    {"id":"wiki","label":"SORA Wiki","url":"https://wiki.sora.org/","category":"documentation","status":"linked-external","summary":"Community documentation and entry point for users and builders, covering the SORA ecosystem, economy and technical materials.","claim_scope":"A live wiki can change; cite the page and revision consulted for technical claims."},
-    {"id":"build","label":"Build on SORA","url":"https://wiki.sora.org/build.html","category":"developer-documentation","status":"linked-external","summary":"Builder documentation hub hosted in the SORA Wiki.","claim_scope":"Follow the referenced documentation for current implementation instructions."},
-    {"id":"builders","label":"SORA Builders Programme","url":"https://sora.org/builders","category":"ecosystem-support","status":"published","summary":"Programme information covering mentorship, grants and ecosystem support for teams.","claim_scope":"Programme terms, eligibility, timelines and availability are controlled by the linked programme page."},
-    {"id":"validator","label":"SORA Validator Guide","url":"https://sora.org/validator","category":"network-participation","status":"linked-action-capable","summary":"Information for operators and nominators about validator infrastructure, stake-weighted selection and operational requirements.","claim_scope":"Network participation has operational and financial consequences. This corpus neither advises nor performs registration, nomination or staking."},
-    {"id":"brand-assets","label":"SORA Brand Assets","url":"https://github.com/sora-xor/sora-branding","category":"brand-resources","status":"linked-external","summary":"Open-source repository for SORA brand resources.","claim_scope":"Consult the repository for current licence and use conditions."},
-    {"id":"github","label":"SORA GitHub","url":"https://github.com/sora-xor","category":"Open source","status":"linked-external","summary":"Open-source organisation and public repository directory for SORA protocol, ecosystem and brand projects.","claim_scope":"Repository activity, branches and licences must be verified at the referenced repository."},
-    {"id":"youtube-channel","label":"SORA YouTube","url":"https://www.youtube.com/sora_xor","category":"social-video","status":"linked-external","summary":"SORA’s YouTube channel and playlists.","claim_scope":"Video availability, counts and transcript coverage change; use the video or transcript itself as evidence."},
-    {"id":"reddit","label":"SORA Reddit","url":"https://www.reddit.com/r/SORA/","category":"community","status":"linked-external","summary":"Community discussion forum.","claim_scope":"Community discussion is not an authoritative protocol or operational source."},
-    {"id":"x","label":"SORA on X","url":"https://twitter.com/sora_xor","category":"social","status":"linked-external","summary":"Social updates channel.","claim_scope":"Time-sensitive social content must be attributed and dated before reuse."},
-    {"id":"telegram","label":"SORA Telegram","url":"https://qrcodes.pro/piEv7h","category":"community","status":"linked-external","summary":"Community channel for SORA discussion and updates.","claim_scope":"Community discussion is not an authoritative protocol or operational source."},
-    {"id":"discord","label":"SORA Discord","url":"https://discord.gg/","category":"community","status":"linked-external","summary":"Community channel for SORA discussion and updates.","claim_scope":"Community discussion is not an authoritative protocol or operational source."}
+  "links": [
+    {
+      "id": "sora-home",
+      "label": "SORA Nexus",
+      "url": "https://sora.org/",
+      "kind": "primary-site",
+      "status": "published"
+    },
+    {
+      "id": "iroha-main",
+      "label": "Hyperledger Iroha — main repository",
+      "url": "https://github.com/hyperledger-iroha/iroha",
+      "kind": "source-repository",
+      "status": "published"
+    },
+    {
+      "id": "iroha-readme",
+      "label": "Iroha README",
+      "url": "https://github.com/hyperledger-iroha/iroha#readme",
+      "kind": "repository-entry",
+      "status": "published"
+    },
+    {
+      "id": "iroha-docs",
+      "label": "Iroha docs",
+      "url": "https://github.com/hyperledger-iroha/iroha/tree/main/docs",
+      "kind": "repository-entry",
+      "status": "published"
+    },
+    {
+      "id": "youtube",
+      "label": "SORA YouTube",
+      "url": "https://www.youtube.com/@sora_xor",
+      "kind": "social",
+      "status": "published"
+    },
+    {
+      "id": "youtube-playlists",
+      "label": "SORA YouTube playlists",
+      "url": "https://www.youtube.com/@sora_xor/playlists",
+      "kind": "social-catalog",
+      "status": "published"
+    },
+    {
+      "id": "github-search",
+      "label": "Iroha source search",
+      "url": "https://github.com/hyperledger-iroha/iroha/search",
+      "kind": "repository-entry",
+      "status": "published"
+    }
   ],
-  "playlists":[{"title":"SORA Nexus","videos":1,"status":"observed","transcript":"unavailable"},{"title":"SORA ECONOMIC FORUM 2024","videos":11,"status":"observed","transcript":"unavailable"},{"title":"SORA at Web Summit 2022","videos":4,"status":"observed","transcript":"unavailable"},{"title":"SORA Card","videos":1,"status":"observed","transcript":"unavailable"},{"title":"SORA Economic Forum 2022","videos":8,"status":"observed","transcript":"unavailable"},{"title":"SORA Economic Forum","videos":19,"status":"observed","transcript":"unavailable"},{"title":"SORA","videos":10,"status":"observed","transcript":"unavailable"},{"title":"Tech Talks","videos":1,"status":"observed","transcript":"unavailable"},{"title":"Polkaswap","videos":4,"status":"observed","transcript":"unavailable"}],
-  "playlists_meta":{"status":"observed","captured_at":"2026-09-08","source":"supplied screenshot; refresh before publication","channel":"https://www.youtube.com/@sora_xor/playlists"}
+  "ecosystem_access": [
+    {
+      "id": "sorametrics",
+      "label": "SoraMetrics · block explorer and analytics",
+      "url": "https://sorametrics.org/",
+      "category": "network-observability",
+      "status": "linked-external",
+      "summary": "Independent SORA analytics interface. It presents separate paths for the Substrate SORA v2 mainnet, the Iroha 3 Nexus / Minamoto mainnet, and a forthcoming marketplace; it also presents XOR migration indicators.",
+      "claim_scope": "Live analytics and counts belong to SoraMetrics and change over time. This corpus does not reproduce them or treat the service as a SORA operational API."
+    },
+    {
+      "id": "cbdc",
+      "label": "CBDC",
+      "url": "https://sora.org/cbdc",
+      "category": "institutional-information",
+      "status": "published",
+      "summary": "Information on SORA infrastructure for tokenized assets and policy-governed digital-currency workflows.",
+      "claim_scope": "Informational page; jurisdictional, regulatory and operational suitability must be assessed independently."
+    },
+    {
+      "id": "wallet",
+      "label": "SORA Wallet",
+      "url": "https://sora.org/wallet",
+      "category": "wallet",
+      "status": "linked-action-capable",
+      "summary": "Self-custodial mobile wallet for SORA ecosystem assets, sending, receiving, swaps and liquidity integrations.",
+      "claim_scope": "Linked for orientation only. This reading corpus never initiates wallet, swap or liquidity activity."
+    },
+    {
+      "id": "polkaswap",
+      "label": "Polkaswap",
+      "url": "https://sora.org/polkaswap",
+      "category": "Decentralized exchange (DEX)",
+      "status": "linked-action-capable",
+      "summary": "Decentralized exchange (DEX) information covering cross-chain swaps, liquidity, bridge routes and order-book trading on SORA.",
+      "claim_scope": "Linked for orientation only. The For Agents corpus provides no trading, routing or transaction tool."
+    },
+    {
+      "id": "sora-tokens",
+      "label": "SORA ecosystem tokens",
+      "url": "https://sora.org/soratokens",
+      "category": "token-catalogue",
+      "status": "published",
+      "summary": "Catalogue page naming XOR, VAL, PSWAP and additional ecosystem tokens.",
+      "claim_scope": "A catalogue is not a price feed, investment view, availability guarantee or recommendation."
+    },
+    {
+      "id": "wiki",
+      "label": "SORA Wiki",
+      "url": "https://wiki.sora.org/",
+      "category": "documentation",
+      "status": "linked-external",
+      "summary": "Community documentation and entry point for users and builders, covering the SORA ecosystem, economy and technical materials.",
+      "claim_scope": "A live wiki can change; cite the page and revision consulted for technical claims."
+    },
+    {
+      "id": "build",
+      "label": "Build on SORA",
+      "url": "https://wiki.sora.org/build.html",
+      "category": "developer-documentation",
+      "status": "linked-external",
+      "summary": "Builder documentation hub hosted in the SORA Wiki.",
+      "claim_scope": "Follow the referenced documentation for current implementation instructions."
+    },
+    {
+      "id": "builders",
+      "label": "SORA Builders Programme",
+      "url": "https://sora.org/builders",
+      "category": "ecosystem-support",
+      "status": "published",
+      "summary": "Programme information covering mentorship, grants and ecosystem support for teams.",
+      "claim_scope": "Programme terms, eligibility, timelines and availability are controlled by the linked programme page."
+    },
+    {
+      "id": "validator",
+      "label": "SORA Validator Guide",
+      "url": "https://sora.org/validator",
+      "category": "network-participation",
+      "status": "linked-action-capable",
+      "summary": "Information for operators and nominators about validator infrastructure, stake-weighted selection and operational requirements.",
+      "claim_scope": "Network participation has operational and financial consequences. This corpus neither advises nor performs registration, nomination or staking."
+    },
+    {
+      "id": "brand-assets",
+      "label": "SORA Brand Assets",
+      "url": "https://github.com/sora-xor/sora-branding",
+      "category": "brand-resources",
+      "status": "linked-external",
+      "summary": "Open-source repository for SORA brand resources.",
+      "claim_scope": "Consult the repository for current licence and use conditions."
+    },
+    {
+      "id": "github",
+      "label": "SORA GitHub",
+      "url": "https://github.com/sora-xor",
+      "category": "Open source",
+      "status": "linked-external",
+      "summary": "Open-source organisation and public repository directory for SORA protocol, ecosystem and brand projects.",
+      "claim_scope": "Repository activity, branches and licences must be verified at the referenced repository."
+    },
+    {
+      "id": "youtube-channel",
+      "label": "SORA YouTube",
+      "url": "https://www.youtube.com/sora_xor",
+      "category": "social-video",
+      "status": "linked-external",
+      "summary": "SORA’s YouTube channel and playlists.",
+      "claim_scope": "Video availability, counts and transcript coverage change; use the video or transcript itself as evidence."
+    },
+    {
+      "id": "reddit",
+      "label": "SORA Reddit",
+      "url": "https://www.reddit.com/r/SORA/",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community discussion forum.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    },
+    {
+      "id": "x",
+      "label": "SORA on X",
+      "url": "https://twitter.com/sora_xor",
+      "category": "social",
+      "status": "linked-external",
+      "summary": "Social updates channel.",
+      "claim_scope": "Time-sensitive social content must be attributed and dated before reuse."
+    },
+    {
+      "id": "telegram",
+      "label": "SORA Telegram",
+      "url": "https://qrcodes.pro/piEv7h",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community channel for SORA discussion and updates.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    },
+    {
+      "id": "discord",
+      "label": "SORA Discord",
+      "url": "https://discord.gg/",
+      "category": "community",
+      "status": "linked-external",
+      "summary": "Community channel for SORA discussion and updates.",
+      "claim_scope": "Community discussion is not an authoritative protocol or operational source."
+    }
+  ],
+  "playlists": [
+    {
+      "id": "sora-nexus",
+      "title": "SORA Nexus",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2021",
+      "title": "SORA Economic Forum 2021",
+      "videos": 19,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2022",
+      "title": "SORA Economic Forum 2022",
+      "videos": 8,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2024",
+      "title": "SORA Economic Forum 2024",
+      "videos": 11,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-web-summit-2022",
+      "title": "SORA at Web Summit 2022",
+      "videos": 4,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-general",
+      "title": "SORA",
+      "videos": 10,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "tech-talks",
+      "title": "Tech Talks",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "polkaswap",
+      "title": "Polkaswap",
+      "videos": 4,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-card",
+      "title": "SORA Card",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    }
+  ],
+  "playlists_meta": {
+    "status": "observed",
+    "captured_at": "2026-09-08",
+    "source": "supplied screenshot; refresh before publication",
+    "channel": "https://www.youtube.com/@sora_xor/playlists"
+  }
 }

@@ -1,0 +1,14 @@
+/* Compact 5 × 4 diagram catalogue: title-led HTML counterpart to the JSON Atlas. */
+.diagram-index-section .diagram-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:minmax(142px,1fr);border-top:1px solid #bfd0d3}
+.diagram-index-section .diagram-card{display:flex;flex-direction:column;justify-content:space-between;min-height:0;padding:1.05rem 1rem;border-right:1px solid #bfd0d3;border-bottom:1px solid #bfd0d3}
+.diagram-index-section .diagram-card:nth-child(3n){border-right:1px solid #bfd0d3}
+.diagram-index-section .diagram-card:nth-child(5n){border-right:0}
+.diagram-index-section .diagram-card h3{margin:.9rem 0 0;color:#172934;font-size:clamp(.88rem,1.15vw,1.1rem);line-height:1.12}
+.diagram-index-section .diagram-card p{margin:.65rem 0 0;color:#dbe7e7;font-size:.72rem;line-height:1.35}
+.diagram-index-section .diagram-card--complete{background:#2d414d;border-color:#2d414d!important}
+.diagram-index-section .diagram-card--complete .diagram-area{color:#c5d6d8}
+.diagram-index-section .diagram-card--complete h3{color:#fff}
+.diagram-index-section .diagram-card--complete .diagram-number{color:#ef6268}
+@media(max-width:1100px){.diagram-index-section .diagram-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.diagram-index-section .diagram-card:nth-child(5n){border-right:1px solid #bfd0d3}.diagram-index-section .diagram-card:nth-child(3n){border-right:0}}
+@media(max-width:700px){.diagram-index-section .diagram-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.diagram-index-section .diagram-card:nth-child(3n){border-right:1px solid #bfd0d3}.diagram-index-section .diagram-card:nth-child(2n){border-right:0}}
+@media(max-width:460px){.diagram-index-section .diagram-grid{grid-template-columns:1fr}.diagram-index-section .diagram-card,.diagram-index-section .diagram-card:nth-child(2n){border-right:0}}

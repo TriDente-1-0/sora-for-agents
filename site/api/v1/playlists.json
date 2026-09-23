@@ -1,0 +1,83 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "record_defaults": {
+    "kind": "video-playlist",
+    "era": "external",
+    "reviewed_at": "2026-09-10",
+    "presentation": "source-linked",
+    "claim_scope": "Observed catalogue metadata only; video availability, counts, and transcripts must be verified at the linked channel."
+  },
+  "catalog": [
+    {
+      "id": "sora-nexus",
+      "title": "SORA Nexus",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2021",
+      "title": "SORA Economic Forum 2021",
+      "videos": 19,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2022",
+      "title": "SORA Economic Forum 2022",
+      "videos": 8,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-economic-forum-2024",
+      "title": "SORA Economic Forum 2024",
+      "videos": 11,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-web-summit-2022",
+      "title": "SORA at Web Summit 2022",
+      "videos": 4,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-general",
+      "title": "SORA",
+      "videos": 10,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "tech-talks",
+      "title": "Tech Talks",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "polkaswap",
+      "title": "Polkaswap",
+      "videos": 4,
+      "status": "observed",
+      "transcript": "unavailable"
+    },
+    {
+      "id": "sora-card",
+      "title": "SORA Card",
+      "videos": 1,
+      "status": "observed",
+      "transcript": "unavailable"
+    }
+  ],
+  "meta": {
+    "status": "observed",
+    "captured_at": "2026-09-08",
+    "source": "supplied screenshot; refresh before publication",
+    "channel": "https://www.youtube.com/@sora_xor/playlists"
+  }
+}

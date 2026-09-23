@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "status": "published",
+  "title": "SORA Nexus — For Agents",
+  "updated": "2026-09-10",
+  "corpus_version": "v1.4.0",
+  "canonical_site": "https://sora.org/",
+  "access": [
+    "web",
+    "markdown",
+    "static-api",
+    "local-stdio-mcp"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "version": "v1",
+  "status": "published",
+  "corpus_version": "v1.4.0",
+  "updated": "2026-09-10",
+  "id": "case-for-xor",
+  "kind": "historical-editorial-document-representation",
+  "title": "The Case for XOR",
+  "author": "Makoto Takemiya",
+  "publisher": "SORAMITSU Co., Ltd.",
+  "source_url": "https://sora.org/assets/how-sora-works/the-case-for-xor.pdf",
+  "presentation": "json-only",
+  "content_mode": "section-by-section representation",
+  "era": "legacy-sora-v2",
+  "notice": "This JSON represents a historical editorial document by page-anchored sections and summaries. It does not replace, amend, or reproduce the canonical PDF wording, and it is not presented as current SORA Nexus policy.",
+  "claim_scope": "Historical economic argument only; not financial advice, a token recommendation, legal advice, a legal-tender proposal, an implementation plan, or a present-tense performance or availability statement.",
+  "sections": [
+    {
+      "id": "abstract",
+      "title": "Abstract",
+      "page_start": 1,
+      "summary": "States the author’s thesis that XOR is a supranational currency whose supply and primary market are managed by a blockchain program. It argues that productive investment and open governance can connect monetary issuance to the creation of goods and services."
+    },
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "page_start": 1,
+      "summary": "Introduces money as a unit of account, store of value, and medium of exchange, then frames the paper as an argument about how a cryptocurrency might be used to support predictable economic growth. It sets up a comparison with Bitcoin’s legal-tender status in El Salvador."
+    },
+    {
+      "id": "creating-economic-growth",
+      "title": "Creating Economic Growth",
+      "page_start": 2,
+      "summary": "Presents the paper’s account of economic growth through factor inputs and productivity. It distinguishes money used for transactions contributing to GDP from money used for asset purchases, and argues that allocation and use of money affect growth, prices, and asset bubbles."
+    },
+    {
+      "id": "xor-catalyst",
+      "title": "XOR as a Catalyst for Economic Growth",
+      "page_start": 4,
+      "summary": "Sets out the paper’s claims about XOR’s bonding-curve model, elastic supply, governance, and intended role in funding productive activity. The paper discusses buy and sell functions, reserves, token voting, and TBCD in support of that argument."
+    },
+    {
+      "id": "bitcoin-comparison",
+      "title": "Comparison to Bitcoin Legal Tender Status in El Salvador",
+      "page_start": 6,
+      "summary": "Compares the paper’s model of XOR with Bitcoin’s legal-tender adoption in El Salvador, discussing remittances, access, distribution infrastructure, currency issuance, mining, and the author’s assessment of economic consequences. These are attributed historical arguments, not current analysis by this corpus."
+    },
+    {
+      "id": "implementation-steps",
+      "title": "Steps to Implement the SORA Economic System in a Country",
+      "page_start": 9,
+      "summary": "Describes the document’s proposed sequence of legislation, wallet localization, liaison and economic-analysis arrangements. This section is retained as historical source material only and is not operational guidance or a current proposal."
+    },
+    {
+      "id": "references",
+      "title": "References",
+      "page_start": 11,
+      "summary": "Lists the academic, institutional, technical, and web references cited by the author in support of the paper’s economic and technical arguments."
+    }
+  ]
+}

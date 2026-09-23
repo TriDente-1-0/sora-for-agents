@@ -1,0 +1,3 @@
+/* Footer brand uses the same typographic proportions as the header brand. */
+footer .footer-brand span{display:block!important;color:#fff!important;font-size:1rem!important;font-weight:800!important;line-height:.93!important;letter-spacing:.04em!important}
+footer .footer-brand small{display:block!important;margin-top:.18rem!important;color:#b8c6c8!important;font-size:.47rem!important;font-weight:700!important;line-height:1!important;letter-spacing:.16em!important}
